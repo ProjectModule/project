@@ -3,14 +3,69 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
 
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
-    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <!--<script src="script/detectmobilebrowser.js"></script>-->
     
+    <style>
+        .newUSer {padding: 0 0 !important;border-style: solid !important;border-width: 0px !important;border-radius: 0px !important;background: #f4f4f4 !important;}
+        .newUSer:active{color:#999}
+    </style>
 </head>
 <body>
     
+    <div id="login" data-role="view" data-title="Log In" data-layout="login-layout" data-model="app.login.viewModel">
+        <div data-role="content">
+            <div style="width:90%;height:auto;margin:0px auto;margin-top:60px;">
+                <div style="width:100%;height:auto;">
+                    <p>
+                        <input type="text" name="login_name" placeholder="Username" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                    </p>
+                    <p>
+                        <input type="password" name="login_pwd" placeholder="Password" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                    </p>
+                    <p>
+                        <button data-role="button" style="width:100%;height:45px;">Log In</button>
+                    </p>
+                    <p style="text-align:center;">
+                        <a data-role="button" data-bind="click:signupView" class="newUSer" style="text-decoration:none;font-family:times;">New User Signup ?</a>
+                    </p>
+                </div>
+                <div style="width:90%;margin:0px auto;margin-top:45px;text-align:center">
+                    <hr style="width:45%;float:left;" color="#CCC"/>
+                        <span>OR</span>
+                    <hr style="width:45%;float:right" color="#CCC"/>
+                </div>
+                <div style="width:100%;height:auto;margin-top:45px;">
+                    <p>
+                        <a data-role="button" style="width:100%;height:35px;background-image:url('style/image/fb.png');background-repeat:no-repeat;background-size:100% 100%"></a>
+                    </p>
+                    <p>
+                        <a data-role="button" style="width:100%;height:35px;background-image:url('style/image/twt.jpg');background-repeat:no-repeat;background-size:100% 100%"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Layout-->
+    <section data-role="layout" data-id="login-layout">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+    </section>
+    
+    <!--Script-->
+    <script src="script/js/app.js"></script>
+    <script src="script/js/signup.js"></script>
+    <script src="script/js/login.js"></script>
+    <script src="script/js/dashboard.js"></script>
 </body>
 </html>

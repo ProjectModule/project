@@ -1,0 +1,24 @@
+<div data-role="view" data-title="Dashboard" data-transition="fade" data-model="app.dashboard.viewModel" data-show="app.dashboard.viewModel.show">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-role="button" data-align="right" data-click="logout">Logout</a>
+        </div>
+    </div>
+ 
+    <div data-role="content">
+        
+    </div>
+</div>
+
+<script>
+    function logout()
+    {
+        localStorage.setItem("LoginUserName","");
+        localStorage.setItem("LoginUserEmail","");
+        localStorage.setItem("LoginStatus",false);
+        app.apps.navigate("index.html");
+    }
+</script>
+
+

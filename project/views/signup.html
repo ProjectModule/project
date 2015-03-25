@@ -1,0 +1,53 @@
+<div data-role="view" data-title="Sign up" data-model="app.signup.viewModel" data-show="app.signup.viewModel.show" data-transition="zoom">
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
+            <a data-role="button" data-align="right" data-bind="click:validation">Submit</a>
+        </div>
+    </div>
+ 
+    <div data-role="content">
+        <div style="width:90%;height:auto;margin:0px auto;margin-top:15px;">
+            <div style="width:40%;height:130px;margin:0px auto;">
+                <img src="style/image/person.jpg" width="100%" height="100%"/>
+            </div>
+            <div style="width:100%;height:auto;">
+                <p>
+                    <input type="text" id="signup_fname" name="signup_fname" data-bind="value:firstname" placeholder="First Name" style="width:49%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                    <input type="text" id="signup_lname" name="signup_lname" data-bind="value:lastname" placeholder="Last Name" style="width:49%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                </p>
+                <p>
+                    <input type="text" id="signup_email" name="signup_email" data-bind="value:email" placeholder="Email Address" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                </p>
+                <p>
+                    <input type="password" id="signup_pwd" name="signup_pwd" data-bind="value:password" placeholder="Password" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                </p>
+                <p>
+                    <input type="number" id="signup_mbnumber" name="signup_mbnumber" data-bind="value:mbnumber" placeholder="Mobile Number" maxlength="10" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                </p>
+                <p>
+                    <span><input type="radio" id="signup_male" data-bind="value:gender_male" value="Male" name="gender"/>Male</span>
+                    <span style="margin-left:43px;"><input type="radio" id="signup_female" value="Female" data-bind="value:gender_female" name="gender"/>Female</span>
+                </p>
+                <p>
+                    <select id="myselect" style="width:100%;height:30px;" data-bind="value:occupation">
+                        <option value="0">Occupation</option>
+                        <option value="1">Private Job</option>
+                        <option value="2">Goverment Job</option>
+                        <option value="3">House Wife</option>
+                    </select>
+                </p>
+                <p>
+                    <input id="statecombobox" style="width:100%;" data-bind="value:state"/>
+                </p>
+                <p>
+                    <textarea cols="29" rows="3" id="addressDtl" placeholder="Address details..." data-bind="value:address"></textarea>
+                </p>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
