@@ -70,7 +70,7 @@
             var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var charReg = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
             
-            /*if(sfname === "")
+            if(sfname === "")
             {
                 navigator.notification.alert("Please enter First name",function(){},"Notification","OK");
                 $('#signup_fname').focus();
@@ -82,7 +82,7 @@
                 navigator.notification.alert("Please enter Last name",function(){},"Notification","OK");
                 $('#signup_lname').focus();
                 return;
-            }*/
+            }
             
             /*if(charReg.test(sfname) || charReg.test(slname))
             {
@@ -90,7 +90,7 @@
                 return;
             }*/
             
-            /*if(semail === "")
+            if(semail === "")
             {
                 navigator.notification.alert("Please enter Email Address",function(){},"Notification","OK");
                 $('#signup_email').focus();
@@ -150,7 +150,7 @@
                 navigator.notification.alert("Please enter your Address",function(){},"Notification","OK");
                 $('#addressDtl').focus();
                 return;
-            }*/
+            }
             
             if(!app.checkConnection())
             {
@@ -195,17 +195,12 @@
             $('#signup_mbnumber').val("");
             $('#myselect').val("0");
             $('#addressDtl').val("");
-           // $('#statecombobox').data("kendoDropDownList").value("Select State");
+            $('#statecombobox').data("kendoDropDownList").value("Select State");
             if($('input[type="radio"]:checked').val() !== undefined)
             {
                 $('#signup_male').prop("checked",false);
                 $('#signup_female').prop("checked",false);
             }
-        },
-
-        
-        byCamera:function()
-        {
         }
     });
     app.signup = {
