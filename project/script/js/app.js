@@ -1,13 +1,29 @@
 var app = (function(win){
     "use strict";
+    
     var db;
     var onDeviceReady = function()
     {
         checkConnection();
         createDB();
         createTable();
+        var camera = new cameraApp();
+        camera.run();
     };
     
+    /* Camera functionality*/
+    function cameraApp(){}
+    
+    cameraApp.prototype = {
+        run:function()
+        {
+            $('#camera').click(function(){
+               app.signup.viewModel.byCamera();
+            });
+        }
+    }
+    
+    /* create database */
     var createDB = function()
     {
         if(window.sqlitePlugins !== undefined)
@@ -20,13 +36,15 @@ var app = (function(win){
         }
     };
     
+    /* create table */
     var createTable = function()
     {
         db.transaction(function(tx){
-            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,name TEXT,email TEXT,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
+            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
         });
     };
     
+    /* Insert data */
     var inserData = function(data)
     {
         app.apps.showLoading();
@@ -44,8 +62,6 @@ var app = (function(win){
         localStorage.setItem("LoginUserEmail",useremail);
         localStorage.setItem("LoginStatus",true);
         
-        
-        
         setTimeout(function(){ 
             app.apps.navigate("views/dashboard.html");
             app.apps.hideLoading();
@@ -54,9 +70,44 @@ var app = (function(win){
     
     var onFailure = function(tx,e)
     {
-        console.log("Sqlite Error : "+e.message);
-    }
+        setTimeout(function(){ 
+            app.apps.hideLoading();
+            console.log("Sqlite Error : "+e.message);
+            if(e.message === "could not execute statement due to a constaint failure (19 constraint failed)")
+            {
+                navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
+            }
+        }, 3000);
+        
+    };
     
+    /* fetch data */
+    var readData = function(data)
+    {
+        console.log(data);
+        db.transaction(function(tx){
+            tx.executeSql("select * from userinfo where email=? and password=?",[data['username'],data['password']],readSuccess,readFailure);
+        });
+    };
+    
+    var readSuccess = function(tx,results)
+    {
+        if(results.rows.length === 1)
+        {
+            app.apps.navigate("views/dashboard.html");
+        }
+        else
+        {
+            navigator.notification.alert("Username and Password not match",function(){},"Login Failed","OK");
+        }
+    };
+    
+    var readFailure = function(tx,e)
+    {
+        console.log("Fetch Sqlite Error : "+e.message);
+    };
+    
+    /* check interne connection available or not */
     var checkConnection = function()
     {
         if(typeof navigator.connection.type !== "undefined")
@@ -81,12 +132,14 @@ var app = (function(win){
         return true;
     };
     
+    
     document.addEventListener("deviceready",onDeviceReady,false);
     
     var mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:""});
     return{
         apps:mobileApp,
         checkConnection:checkConnection,
-        inserData:inserData
+        inserData:inserData,
+        readData:readData
     };
 }(window));

@@ -37,6 +37,7 @@
     "ID_RESOLUTION_HD720P"
   ],
   "CorePlugins": [
+    "org.apache.cordova.camera",
     "org.apache.cordova.console",
     "org.apache.cordova.device",
     "org.apache.cordova.network-information",

@@ -7,6 +7,7 @@
         show:function()
         {
            app.signup.viewModel.blankSignupField();
+           app.login.viewModel.blankLoginField();
         }
     });
     app.dashboard = {

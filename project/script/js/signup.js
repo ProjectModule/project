@@ -16,8 +16,7 @@
         address:'',
         name:"",
         show:function()
-        {
-            
+        {   
             /* Load state data to the dropdownlist*/
             var dataS = new kendo.data.DataSource({
                 data:["Assam","Jammu and Kashmir","Maharashtra","Uttar Pradesh","Gujarat","Andhra Pradesh","Karnataka","Kerala","West Bengal","Tripura","Chhattisgarh","Punjab","Mizoram","Rajasthan","Goa","Uttarakhand","Arunachal Pradesh","Bihar","Lakshadweep","Jharkhand","Dadra and Nagar Haveli","Orissa","Tamil Nadu","Himachal Pradesh","Haryana","Madhya Pradesh","Delhi","Chandigarh","Daman and Diu","Nagaland","Sikkim","Manipur","Meghalaya","Pondicherry","Jammu & Kashmir","Andaman and Nicobar Islands"]
@@ -71,7 +70,7 @@
             var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var charReg = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
             
-          /*  if(sfname === "")
+            /*if(sfname === "")
             {
                 navigator.notification.alert("Please enter First name",function(){},"Notification","OK");
                 $('#signup_fname').focus();
@@ -83,15 +82,15 @@
                 navigator.notification.alert("Please enter Last name",function(){},"Notification","OK");
                 $('#signup_lname').focus();
                 return;
-            }
-            */
+            }*/
+            
             /*if(charReg.test(sfname) || charReg.test(slname))
             {
                 navigator.notification.alert("special character not enter in textfield",function(){},"Notification","OK");
                 return;
             }*/
             
-          /*  if(semail === "")
+            /*if(semail === "")
             {
                 navigator.notification.alert("Please enter Email Address",function(){},"Notification","OK");
                 $('#signup_email').focus();
@@ -196,11 +195,30 @@
             $('#signup_mbnumber').val("");
             $('#myselect').val("0");
             $('#addressDtl').val("");
-            $('#statecombobox').data("kendoDropDownList").value("Select State");
+           // $('#statecombobox').data("kendoDropDownList").value("Select State");
             if($('input[type="radio"]:checked').val() !== undefined)
             {
                 $('#signup_male').prop("checked",false);
                 $('#signup_female').prop("checked",false);
+            }
+        },
+        
+        byCamera:function()
+        {
+            console.log(navigator.camera);
+            navigator.camera.getPicture(onCameraSuccess,onCameraFail,{
+                quality:50,
+                destinationType:Camera.DestinationType.DATA_URL
+            });
+            
+            function onCameraSuccess(imageData)
+            {
+                alert(imageData);
+            }
+            
+            function onCameraFail(message)
+            {
+                alert(message);
             }
         }
     });
