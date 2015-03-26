@@ -70,6 +70,7 @@ var app = (function(win){
     /* fetch data */
     var readData = function(data)
     {
+        app.apps.showLoading();
         console.log(data);
         db.transaction(function(tx){
             tx.executeSql("select * from userinfo where email=? and password=?",[data['username'],data['password']],readSuccess,readFailure);
@@ -80,11 +81,18 @@ var app = (function(win){
     {
         if(results.rows.length === 1)
         {
-            app.apps.navigate("views/dashboard.html");
+            setTimeout(function(){ 
+                app.apps.navigate("views/dashboard.html");
+                app.apps.hideLoading();
+            }, 3000);
         }
         else
         {
-            navigator.notification.alert("Username and Password not match",function(){},"Login Failed","OK");
+            setTimeout(function(){ 
+                navigator.notification.alert("Username and Password not match",function(){},"Login Failed","OK");
+                app.apps.hideLoading();
+            }, 3000);
+            
         }
     };
     
