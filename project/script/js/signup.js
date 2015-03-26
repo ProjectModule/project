@@ -202,24 +202,10 @@
                 $('#signup_female').prop("checked",false);
             }
         },
+
         
         byCamera:function()
         {
-            console.log(navigator.camera);
-            navigator.camera.getPicture(onCameraSuccess,onCameraFail,{
-                quality:50,
-                destinationType:Camera.DestinationType.DATA_URL
-            });
-            
-            function onCameraSuccess(imageData)
-            {
-                alert(imageData);
-            }
-            
-            function onCameraFail(message)
-            {
-                alert(message);
-            }
         }
     });
     app.signup = {

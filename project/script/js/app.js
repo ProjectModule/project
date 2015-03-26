@@ -7,21 +7,8 @@ var app = (function(win){
         checkConnection();
         createDB();
         createTable();
-        var camera = new cameraApp();
-        camera.run();
     };
     
-    /* Camera functionality*/
-    function cameraApp(){}
-    
-    cameraApp.prototype = {
-        run:function()
-        {
-            $('#camera').click(function(){
-               app.signup.viewModel.byCamera();
-            });
-        }
-    }
     
     /* create database */
     var createDB = function()
