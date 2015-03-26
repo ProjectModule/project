@@ -9,18 +9,6 @@ var app = (function(win){
         createTable();
     };
     
-    /* Camera functionality*/
-    function cameraApp(){}
-    
-    cameraApp.prototype = {
-        run:function()
-        {
-            $('#camera').click(function(){
-               app.signup.viewModel.byCamera();
-            });
-        }
-    }
-    
     /* create database */
     var createDB = function()
     {

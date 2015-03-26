@@ -206,21 +206,6 @@
         
         byCamera:function()
         {
-            alert("hgjhgj");
-            navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType : Camera.PictureSourceType.CAMERA 
-            });
-            
-
-            function onSuccess(imageData) {
-                var image = document.getElementById('myImage');
-                image.src = "data:image/jpeg;base64," + imageData;
-            }
-
-            function onFail(message) {
-                alert('Failed because: ' + message);
-            }
         }
     });
     app.signup = {
