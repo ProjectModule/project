@@ -112,7 +112,7 @@
             
             if (!emailReg.test(semail))
             {
-                navigator.notification.alert('Please enter a valid email address.');
+                navigator.notification.alert('Please enter a valid email address.',function(){},"Notification","OK");
                 $('#signup_email').focus();
                 return;
             }
