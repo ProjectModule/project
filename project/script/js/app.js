@@ -7,7 +7,7 @@ var app = (function(win){
         checkConnection();
         createDB();
         createTable();
-    };
+    }; 
     
     /* create database */
     var createDB = function()
@@ -26,17 +26,18 @@ var app = (function(win){
     var createTable = function()
     {
         db.transaction(function(tx){
-            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
+            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
         });
     };
     
     /* Insert data */
     var inserData = function(data)
     {
+        console.log(data);
         app.apps.showLoading();
         db.transaction(function(tx){
             var nowDate = new Date();
-            tx.executeSql("insert into userinfo(name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?)",[data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
+            tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
         });
     };
     

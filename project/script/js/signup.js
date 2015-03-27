@@ -26,7 +26,6 @@
                 app.signup.viewModel.setComboBoxData(data);
             });
             
-            
             /*set radio button functionality*/
             $("select > option[value='3']").css("display","none");
             
@@ -42,6 +41,20 @@
             
             /*Blank the signup field*/
             app.signup.viewModel.blankSignupField();
+
+            /*Camera functionality call*/
+            $("#camera").unbind('.myPlugin');
+            
+            $('#camera').on("click.myPlugin",function(){
+                app.signup.viewModel.cameraFunction();
+            });
+
+            /*Photo gallery functionality call*/
+            $("#gallery").unbind('.myPlugin');
+            
+            $('#gallery').on("click.myPlugin",function(){
+                app.signup.viewModel.galleryFunction();
+            });
         },
         
         setComboBoxData:function(data)
@@ -163,7 +176,7 @@
             }
             else
             {
-                var dataParam=[];
+                dataParam=[];
                 name = sfname+" "+slname;
                 that.set("name",name);
                 dataParam['name'] = name;
@@ -182,6 +195,7 @@
                 {
                     dataParam['gender'] = genderFemale;
                 }
+                dataParam['image'] = localStorage.getItem('image');
                 app.inserData(dataParam);
             }
         },
@@ -201,6 +215,62 @@
                 $('#signup_male').prop("checked",false);
                 $('#signup_female').prop("checked",false);
             }
+            $('#myImage').attr("src","style/image/person.jpg");
+        },
+        
+        cameraFunction:function()
+        {
+            var that = this;
+            alert("again call");
+            navigator.camera.getPicture(that.cameraFunctionSuccess,that.cameraFunctionError,{
+                quality:50,
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.CAMERA,
+                encodingType:Camera.EncodingType.JPEG
+            });
+        },
+        
+        cameraFunctionSuccess:function(imageData)
+        {
+            console.log(imageData);
+            alert(imageData);
+            
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+            localStorage.setItem("image",imageData);
+        },
+        
+        cameraFunctionError:function(message)
+        {
+            alert(message);
+        },
+        
+        galleryFunction:function()
+        {
+            var that = this;
+            
+            alert("again again call");
+            navigator.camera.getPicture(that.galleryFunctionSuccess,that.galleryFunctionError,{
+                quality:50,
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
+                encodingType:Camera.EncodingType.JPEG
+            });
+        },
+        
+        galleryFunctionSuccess:function(imageData)
+        {
+            console.log(imageData);
+            alert(imageData);
+            
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+            localStorage.setItem("image",imageData);
+        },
+        
+        galleryFunctionError:function(message)
+        {
+            alert(message);
         }
     });
     app.signup = {

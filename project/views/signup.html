@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Sign up" data-model="app.signup.viewModel" data-show="app.signup.viewModel.show" data-transition="zoom">
+<div data-role="view" data-title="Sign up" data-model="app.signup.viewModel" data-show="app.signup.viewModel.show" data-transition="overlay:up">
     <div data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
@@ -10,11 +10,11 @@
     <div data-role="content">
         <div style="width:90%;height:auto;margin:0px auto;margin-top:15px;">
             <div style="width:100%;">
-                <div style="width:40%;height:130px;margin:0px auto;">
-                    <a data-role="button" href="#cameraOption" data-rel="actionsheet" class="newUSer"><img id="myImage" src="style/image/person.jpg" width="100%" height="100%"/></a>
+                <div style="width:40%;height:120px;margin:0px auto;">
+                    <a data-role="button" href="#cameraOption" data-rel="actionsheet" class="newUSer" style="width:100%;height:100%"><img id="myImage" src="style/image/person.jpg" width="100%" height="100%"/></a>
                     <ul data-role="actionsheet" id="cameraOption">
                         <li><a id="camera">Camera</a></li>
-                        <li><a>File System</a></li>
+                        <li><a id="gallery">Gallery</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,10 +50,7 @@
                 <p>
                     <textarea cols="29" rows="3" id="addressDtl" placeholder="Address details..." data-bind="value:address"></textarea>
                 </p>
-               
             </div>
         </div>
     </div>
 </div>
-
-
