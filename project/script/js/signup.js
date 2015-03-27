@@ -209,19 +209,19 @@
             $('#signup_mbnumber').val("");
             $('#myselect').val("0");
             $('#addressDtl').val("");
-            //$('#statecombobox').data("kendoDropDownList").value("Select State");
+            $('#statecombobox').data("kendoDropDownList").value("Select State");
             if($('input[type="radio"]:checked').val() !== undefined)
             {
                 $('#signup_male').prop("checked",false);
                 $('#signup_female').prop("checked",false);
             }
-            $('#myImage').attr("src","style/image/person.jpg");
+            $('#myImage').attr("src","style/image/myimg.png");
+            
         },
         
         cameraFunction:function()
         {
             var that = this;
-            alert("again call");
             navigator.camera.getPicture(that.cameraFunctionSuccess,that.cameraFunctionError,{
                 quality:50,
                 destinationType:Camera.DestinationType.DATA_URL,
@@ -232,9 +232,6 @@
         
         cameraFunctionSuccess:function(imageData)
         {
-            console.log(imageData);
-            alert(imageData);
-            
             var image = document.getElementById('myImage');
             image.src = "data:image/jpeg;base64," + imageData;
             localStorage.setItem("image",imageData);
@@ -242,14 +239,12 @@
         
         cameraFunctionError:function(message)
         {
-            alert(message);
+             navigator.notification.alert(message,function(){},"Image Upload Failed","OK");
         },
         
         galleryFunction:function()
         {
             var that = this;
-            
-            alert("again again call");
             navigator.camera.getPicture(that.galleryFunctionSuccess,that.galleryFunctionError,{
                 quality:50,
                 destinationType:Camera.DestinationType.DATA_URL,
@@ -261,9 +256,6 @@
         
         galleryFunctionSuccess:function(imageData)
         {
-            console.log(imageData);
-            alert(imageData);
-            
             var image = document.getElementById('myImage');
             image.src = "data:image/jpeg;base64," + imageData;
             localStorage.setItem("image",imageData);
@@ -271,7 +263,7 @@
         
         galleryFunctionError:function(message)
         {
-            alert(message);
+            navigator.notification.alert(message,function(){},"Image Upload Failed","OK");
         }
     });
     app.signup = {
