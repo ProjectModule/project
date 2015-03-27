@@ -83,7 +83,7 @@
             var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var charReg = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
             
-            /*if(sfname === "")
+            if(sfname === "")
             {
                 navigator.notification.alert("Please enter First name",function(){},"Notification","OK");
                 $('#signup_fname').focus();
@@ -97,11 +97,11 @@
                 return;
             }
             
-            if(charReg.test(sfname) || charReg.test(slname))
+            /*if(charReg.test(sfname) || charReg.test(slname))
             {
                 navigator.notification.alert("special character not enter in textfield",function(){},"Notification","OK");
                 return;
-            }
+            }*/
             
             if(semail === "")
             {
@@ -163,7 +163,7 @@
                 navigator.notification.alert("Please enter your Address",function(){},"Notification","OK");
                 $('#addressDtl').focus();
                 return;
-            }*/
+            }
             
             if(!app.checkConnection())
             {
