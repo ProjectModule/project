@@ -27,7 +27,7 @@
             });
             
             /*set radio button functionality*/
-            $("select > option[value='3']").css("display","none");
+            /*$("select > option[value='3']").css("display","none");
             
             $("#signup_female").change(function(){
                 $('select option[value="0"]').attr('selected',true);
@@ -37,6 +37,10 @@
             $("#signup_male").change(function(){
                 $('select option[value="0"]').attr('selected',true);
                 $("select > option[value='3']").css("display","none");
+            });*/
+            
+            $("#signup_male,#signup_female").on("change",function(){
+                $("#myselect").css("display","block");
             });
             
             /*Blank the signup field*/
@@ -216,6 +220,7 @@
                 $('#signup_female').prop("checked",false);
             }
             $('#myImage').attr("src","style/image/myimg.png");
+            $("#myselect").css("display","none");
             
         },
         
