@@ -37,11 +37,11 @@
                     <span style="margin-left:43px;"><input type="radio" id="signup_female" value="Female" data-bind="value:gender_female" name="gender"/>Female</span>
                 </p>
                 <p>
-                    <select id="myselect" style="width:100%;height:30px;display:none" data-bind="value:occupation">
+                    <select id="myselect" style="width:100%;height:30px;" data-bind="value:occupation">
                         <option value="0">Occupation</option>
                         <option value="1">Private Job</option>
                         <option value="2">Goverment Job</option>
-                        <option value="3">House Wife</option>
+                        <option value="3" data-bind="visible:genderStatus">House Wife</option>
                     </select>
                 </p>
                 <p>

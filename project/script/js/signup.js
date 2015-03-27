@@ -15,6 +15,7 @@
         state:'',
         address:'',
         name:"",
+        genderStatus:false,
         show:function()
         {   
             /* Load state data to the dropdownlist*/
@@ -39,9 +40,9 @@
                 $("select > option[value='3']").css("display","none");
             });*/
             
-            $("#signup_male,#signup_female").on("change",function(){
+           /* $("#signup_male,#signup_female").on("change",function(){
                 $("#myselect").css("display","block");
-            });
+            });*/
             
             /*Blank the signup field*/
             app.signup.viewModel.blankSignupField();
