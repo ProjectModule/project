@@ -250,12 +250,12 @@
             var that = this;
             
             alert("again again call");
-            navigator.camera.getPicture(that.galleryFunctionSuccess,that.galleryFunctionError,{
+           /* navigator.camera.getPicture(that.galleryFunctionSuccess,that.galleryFunctionError,{
                 quality:50,
                 destinationType:Camera.DestinationType.DATA_URL,
                 sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
                 encodingType:Camera.EncodingType.JPEG
-            });
+            });*/
         },
         
         galleryFunctionSuccess:function(imageData)
