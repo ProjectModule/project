@@ -12,42 +12,68 @@ var app = (function(win){
     /* create database */
     var createDB = function()
     {
-        console.log(window);
-        if(window.sqlitePlugin !== undefined)
+        console.log(window.device);
+        
+        if(device.platform === "Android")
         {
-            alert("sqlite plugins");
-            db = window.sqlitePlugin.openDatabase("SQLDB");
+            if(window.sqlitePlugin !== undefined)
+            {
+                alert("sqlite plugins in Android Phone");
+                db = window.sqlitePlugin.openDatabase("SQLDB");
+            }
+            else
+            {
+                alert("webSql in Android Phone");
+                db = window.openDatabase("SQLDB","1.1","Hybrid Database",1000000);
+            }
         }
         else
         {
-            alert("webSql plugins");
-            db = window.openDatabase("SQLDB","1.1","Hybrid Database",1000000);
+            if(window.sqlitePlugin !== undefined)
+            {
+                alert("sqlite plugins in window phone");
+                db = window.sqlitePlugin.openDatabase("SQLDB");
+            }
         }
     };
     
     /* create table */
     var createTable = function()
     {
-        db.transaction(function(tx){
-            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
-        });
+        try
+        {
+            db.transaction(function(tx){
+                tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
+            });
+        }
+        catch(e)
+        {
+            navigator.notification.alert(e.message,function(){},"Notification","OK");
+        }
     };
     
     /* Insert data */
     var inserData = function(data)
     {
         app.apps.showLoading();
-        db.transaction(function(tx){
-            var nowDate = new Date();
-            console.log(tx);
-            tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
-        });
+        try
+        {
+            db.transaction(function(tx){
+                var nowDate = new Date();
+                tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
+            });
+        }
+        catch(e)
+        {
+            navigator.notification.alert(e.message,function(){},"Notification","OK");
+        }
     };
     
     var onSuccess = function(tx,r)
     {
         var username = $('#signup_fname').val()+" "+$('#signup_lname').val();
         var useremail = $('#signup_email').val();
+        
         localStorage.setItem("LoginUserName",username);
         localStorage.setItem("LoginUserEmail",useremail);
         localStorage.setItem("LoginStatus",true);
@@ -62,8 +88,6 @@ var app = (function(win){
     {
         setTimeout(function(){ 
             app.apps.hideLoading();
-            console.log("Sqlite Error : "+e.message);
-            alert("failure"+e.message);
             if(e.message === "column email is not unique")
             {
                 navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
@@ -76,10 +100,16 @@ var app = (function(win){
     var readData = function(data)
     {
         app.apps.showLoading();
-        console.log(data);
-        db.transaction(function(tx){
-            tx.executeSql("select * from userinfo where email=? and password=?",[data['username'],data['password']],readSuccess,readFailure);
-        });
+        try
+        {
+            db.transaction(function(tx){
+                tx.executeSql("select * from userinfo where email=? and password=?",[data['username'],data['password']],readSuccess,readFailure);
+            });
+        }
+        catch(e)
+        {
+           navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK"); 
+        }
     };
     
     var readSuccess = function(tx,results)

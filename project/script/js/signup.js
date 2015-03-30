@@ -189,6 +189,7 @@
                 dataParam['occupation'] = soccupation;
                 dataParam['state'] = sState;
                 dataParam['address'] = saddress;
+                dataParam['image'] = localStorage.getItem('image');
                 
                 if($('input[type="radio"]:checked').val() === 'Male')
                 {
@@ -198,8 +199,23 @@
                 {
                     dataParam['gender'] = genderFemale;
                 }
-                dataParam['image'] = localStorage.getItem('image');
-                app.inserData(dataParam);
+                
+                
+                if(device.platform === "Android")
+                {
+                    app.inserData(dataParam);
+                }
+                else
+                {
+                    if(window.sqlitePlugin !== undefined)
+                    {
+                        app.inserData(dataParam);
+                    }
+                    else
+                    {
+                       alert("webSql not support in windows phone");
+                    }
+                }
             }
         },
         
