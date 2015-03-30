@@ -129,7 +129,7 @@ var app = (function(win){
                 }
                 else if(device.platform === "Android")
                 {
-                    if(e.message === "column email is not unique(code 19)")
+                    if(e.message === "column email is not unique (code 19)")
                     {
                         navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
                     }

@@ -203,14 +203,13 @@
                 
                 if(device.platform === "Android")
                 {
-                    //app.inserData(dataParam);
                     window.myDB.inserData(dataParam);
                 }
                 else
                 {
                     if(window.sqlitePlugin !== undefined)
                     {
-                        //app.inserData(dataParam);
+                        window.myDB.inserData(dataParam);
                     }
                     else
                     {
