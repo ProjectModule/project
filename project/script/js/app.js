@@ -120,7 +120,6 @@ var app = (function(win){
             setTimeout(function(){ 
                 app.apps.hideLoading();
 
-                alert(e.message);
                 if (window.navigator.simulator === true)
                 {
                     if(e.message === "could not execute statement due to a constaint failure (19 constraint failed)")
@@ -130,7 +129,7 @@ var app = (function(win){
                 }
                 else if(device.platform === "Android")
                 {
-                    if(e.message === "column email is not unique")
+                    if(e.message === "column email is not unique(code 19)")
                     {
                         navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
                     }
