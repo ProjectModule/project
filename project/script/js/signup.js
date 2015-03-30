@@ -213,7 +213,7 @@
                     }
                     else
                     {
-                       alert("webSql not support in windows phone");
+                       alert("Sqlite plugins is undefined and webSql not support in windows phone");
                     }
                 }
             }

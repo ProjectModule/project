@@ -6,7 +6,7 @@ var app = (function(win){
     {
         checkConnection();
         createDB();
-        createTable();
+        
     }; 
     
     /* create database */
@@ -20,11 +20,13 @@ var app = (function(win){
             {
                 alert("sqlite plugins in Android Phone");
                 db = window.sqlitePlugin.openDatabase("SQLDB");
+                createTable();
             }
             else
             {
                 alert("webSql in Android Phone");
                 db = window.openDatabase("SQLDB","1.1","Hybrid Database",1000000);
+                createTable();
             }
         }
         else
@@ -33,6 +35,7 @@ var app = (function(win){
             {
                 alert("sqlite plugins in window phone");
                 db = window.sqlitePlugin.openDatabase("SQLDB");
+                createTable();
             }
         }
     };
