@@ -12,6 +12,8 @@ var app = (function(win){
     /* create database */
     var createDB = function()
     {
+        console.log(window);
+        alert(window.sqlitePlugins);
         if(window.sqlitePlugins !== undefined)
         {
             alert("sqlite");
@@ -42,7 +44,7 @@ var app = (function(win){
             db.transaction(function(tx){
                 var nowDate = new Date();
                 console.log(tx);
-               // tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
+                tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
             });
         }
         catch(e)
