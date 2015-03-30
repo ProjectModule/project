@@ -4,9 +4,19 @@ var app = (function(win){
     var db;
     var onDeviceReady = function()
     {
-        checkConnection();
+       // checkConnection();
         createDB();
         createTable();
+        
+        if(!checkConnection())
+        {
+            navigator.notification.confirm("Internet is not available",function(confirm){
+                if(confirm === true || confirm === 1)
+                {
+                    app.signup.viewModel.validation();
+                }
+            },"Connection Error","Retry,Cancel")
+        }
     }; 
     
     /* create database */
@@ -35,10 +45,19 @@ var app = (function(win){
     {
         console.log(data);
         app.apps.showLoading();
-        db.transaction(function(tx){
-            var nowDate = new Date();
-            tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
-        });
+        try
+        {
+            db.transaction(function(tx){
+                var nowDate = new Date();
+                console.log(tx);
+                tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
+            });
+        }
+        catch(e)
+        {
+            alert(e.message);
+            alert(JSON.stringify(e));
+        }
     };
     
     var onSuccess = function(tx,r)

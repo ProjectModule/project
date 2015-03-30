@@ -92,7 +92,7 @@
             
             var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             
-            if(sfname === "")
+            /*if(sfname === "")
             {
                 navigator.notification.alert("Please enter First name",function(){},"Notification","OK");
                 $('#signup_fname').focus();
@@ -166,7 +166,7 @@
                 navigator.notification.alert("Please enter your Address",function(){},"Notification","OK");
                 $('#addressDtl').focus();
                 return;
-            }
+            }*/
             
             if(!app.checkConnection())
             {
