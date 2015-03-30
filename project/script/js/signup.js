@@ -168,7 +168,7 @@
                 return;
             }*/
             
-            if(!app.checkConnection())
+            if(!window.connection.checkConnection())
             {
                 navigator.notification.confirm("Internet is not available",function(confirm){
                     if(confirm === true || confirm === 1)
@@ -203,13 +203,14 @@
                 
                 if(device.platform === "Android")
                 {
-                    app.inserData(dataParam);
+                    //app.inserData(dataParam);
+                    window.myDB.inserData(dataParam);
                 }
                 else
                 {
                     if(window.sqlitePlugin !== undefined)
                     {
-                        app.inserData(dataParam);
+                        //app.inserData(dataParam);
                     }
                     else
                     {

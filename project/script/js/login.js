@@ -17,7 +17,7 @@
                 lusername = that.get("lname"),
                 lpassword = that.get("lpwd");
             
-            if(!app.checkConnection())
+            if(!window.connection.checkConnection())
             {
                 navigator.notification.confirm("Internet is not available",function(confirm){
                     if(confirm === true || confirm === 1)
@@ -47,7 +47,7 @@
                     var dataParam={};
                     dataParam['username'] = lusername;
                     dataParam['password'] = lpassword;
-                    app.readData(dataParam);
+                    window.myDB.readData(dataParam);
                 }
             }
         },
