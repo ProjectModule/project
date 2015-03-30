@@ -63,8 +63,8 @@ var app = (function(win){
         setTimeout(function(){ 
             app.apps.hideLoading();
             console.log("Sqlite Error : "+e.message);
-            alert("failure");
-            if(e.message === "could not execute statement due to a constaint failure (19 constraint failed)")
+            alert("failure"+e.message);
+            if(e.message === "column email is not unique")
             {
                 navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
             }
