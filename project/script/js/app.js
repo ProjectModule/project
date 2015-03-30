@@ -91,7 +91,6 @@ var app = (function(win){
     {
         setTimeout(function(){ 
             app.apps.hideLoading();
-            alert(e.message);
             
             if(device.platform === "Android")
             {
