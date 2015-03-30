@@ -91,9 +91,21 @@ var app = (function(win){
     {
         setTimeout(function(){ 
             app.apps.hideLoading();
-            if(e.message === "column email is not unique")
+            alert(e.message);
+            
+            if(device.platform === "Android")
             {
-                navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
+                if(e.message === "column email is not unique")
+                {
+                    navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
+                }
+            }
+            else
+            {
+               if(e.message === "Constraint")
+                {
+                    navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
+                } 
             }
         },2000);
         
