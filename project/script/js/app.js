@@ -12,11 +12,10 @@ var app = (function(win){
     /* create database */
     var createDB = function()
     {
-        console.log(window);
-        alert(window.sqlitePlugins);
-        if(window.sqlitePlugins !== undefined)
+        console.log(window.sqlitePlugin);
+        if(window.sqlitePlugin !== undefined)
         {
-            alert("sqlite");
+            alert("sqlite plugins");
             db = window.sqlitePlugin.openDatabase("SQLDB");
         }
         else
@@ -29,15 +28,21 @@ var app = (function(win){
     /* create table */
     var createTable = function()
     {
-        db.transaction(function(tx){
-            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
-        });
+        try
+        {
+            db.transaction(function(tx){
+                tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
+            });
+        }
+        catch(e)
+        {
+            alert(e.message);
+        }
     };
     
     /* Insert data */
     var inserData = function(data)
     {
-        console.log(data);
         app.apps.showLoading();
         try
         {
@@ -50,7 +55,6 @@ var app = (function(win){
         catch(e)
         {
             alert(e.message);
-            alert(JSON.stringify(e));
         }
     };
     
@@ -65,7 +69,7 @@ var app = (function(win){
         setTimeout(function(){ 
             app.apps.navigate("views/dashboard.html");
             app.apps.hideLoading();
-        }, 3000);
+        }, 2000);
     };
     
     var onFailure = function(tx,e)
@@ -77,7 +81,7 @@ var app = (function(win){
             {
                 navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
             }
-        }, 3000);
+        },2000);
         
     };
     
@@ -98,14 +102,14 @@ var app = (function(win){
             setTimeout(function(){ 
                 app.apps.navigate("views/dashboard.html");
                 app.apps.hideLoading();
-            }, 3000);
+            }, 2000);
         }
         else
         {
             setTimeout(function(){ 
                 navigator.notification.alert("Username and Password not match",function(){},"Login Failed","OK");
                 app.apps.hideLoading();
-            }, 3000);
+            }, 2000);
             
         }
     };
