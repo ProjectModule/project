@@ -20,7 +20,7 @@ var app = (function(win){
         }
         else
         {
-            alert("webSql");
+            alert("webSql plugins");
             db = window.openDatabase("SQLDB","1.1","Hybrid Database",1000000);
         }
     };
@@ -28,34 +28,20 @@ var app = (function(win){
     /* create table */
     var createTable = function()
     {
-        try
-        {
-            db.transaction(function(tx){
-                tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
-            });
-        }
-        catch(e)
-        {
-            alert(e.message);
-        }
+        db.transaction(function(tx){
+            tx.executeSql("CREATE TABLE IF NOT EXISTS userinfo(id INTEGER PRIMARY KEY ASC,image text,name TEXT,email TEXT UNIQUE,password TEXT,mobile_number INTEGER,gender TEXT,occupation TEXT,state TEXT,address TEXT,date DATETIME)",[]);
+        });
     };
     
     /* Insert data */
     var inserData = function(data)
     {
         app.apps.showLoading();
-        try
-        {
-            db.transaction(function(tx){
-                var nowDate = new Date();
-                console.log(tx);
-                tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
-            });
-        }
-        catch(e)
-        {
-            alert(e.message);
-        }
+        db.transaction(function(tx){
+            var nowDate = new Date();
+            console.log(tx);
+            tx.executeSql("insert into userinfo(image,name,email,password,mobile_number,gender,occupation,state,address,date) values(?,?,?,?,?,?,?,?,?,?)",[data['image'],data['name'],data['email'],data['password'],data['mobile'],data['gender'],data['occupation'],data['state'],data['address'],nowDate],onSuccess,onFailure);
+        });
     };
     
     var onSuccess = function(tx,r)
@@ -77,6 +63,7 @@ var app = (function(win){
         setTimeout(function(){ 
             app.apps.hideLoading();
             console.log("Sqlite Error : "+e.message);
+            alert("failure");
             if(e.message === "could not execute statement due to a constaint failure (19 constraint failed)")
             {
                 navigator.notification.alert("Email Id used by another User",function(){},"Notification","OK");
