@@ -12,7 +12,7 @@ var app = (function(win){
     /* create database */
     var createDB = function()
     {
-        console.log(window.sqlitePlugin);
+        console.log(window);
         if(window.sqlitePlugin !== undefined)
         {
             alert("sqlite plugins");
