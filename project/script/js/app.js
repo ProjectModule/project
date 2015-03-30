@@ -120,7 +120,7 @@ var app = (function(win){
             setTimeout(function(){ 
                 app.apps.hideLoading();
 
-                console.log(e);
+                alert(e.message);
                 if (window.navigator.simulator === true)
                 {
                     if(e.message === "could not execute statement due to a constaint failure (19 constraint failed)")
