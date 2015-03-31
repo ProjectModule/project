@@ -226,7 +226,7 @@ var app = (function(win){
             var that = this;
             try
             {
-                navigator.camera.getPicture(that.gallerySuccess,that.galleryError,{
+                navigator.camera.getPicture(this.gallerySuccess,this.galleryError,{
                 quality:50,
                 destinationType:Camera.DestinationType.DATA_URL,
                 sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
