@@ -190,13 +190,21 @@ var app = (function(win){
         
         camera:function()
         {
+            alert("camera");
             var that = this;
-            navigator.camera.getPicture(that.cameraSuccess,that.cameraError,{
-                quality:50,
-                destinationType:Camera.DestinationType.DATA_URL,
-                sourceType:Camera.PictureSourceType.CAMERA,
-                encodingType:Camera.EncodingType.JPEG
-            });
+            try
+            {
+                navigator.camera.getPicture(that.cameraSuccess,that.cameraError,{
+                    quality:50,
+                    destinationType:Camera.DestinationType.DATA_URL,
+                    sourceType:Camera.PictureSourceType.CAMERA,
+                    encodingType:Camera.EncodingType.JPEG
+                });
+            }
+            catch(e)
+            {
+                alert(e.message);
+            }
         },
         
         cameraSuccess:function(imageData)
@@ -213,13 +221,21 @@ var app = (function(win){
         
         gallery:function()
         {
+            alert("gallery");
             var that = this;
-            navigator.camera.getPicture(that.gallerySuccess,that.galleryError,{
+            try
+            {
+                navigator.camera.getPicture(that.gallerySuccess,that.galleryError,{
                 quality:50,
                 destinationType:Camera.DestinationType.DATA_URL,
                 sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
                 encodingType:Camera.EncodingType.JPEG
-            });
+                });
+            }
+            catch(e)
+            {
+                alert(e.message);
+            }
         },
         
         gallerySuccess:function(imageData)
