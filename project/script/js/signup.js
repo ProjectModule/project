@@ -15,6 +15,7 @@
         state:'',
         address:'',
         name:"",
+        inVisible:true,
         show:function()
         {   
             /* Load state data to the dropdownlist*/
@@ -26,7 +27,6 @@
                 var data = this.data();
                 app.signup.viewModel.setComboBoxData(data);
             });
-            
             
             /*set radio button functionality*/
             
@@ -66,7 +66,6 @@
                 app.signup.viewModel.galleryFunction();
             });
         },
-        
         setComboBoxData:function(data)
         {
             $("#statecombobox").kendoDropDownList({

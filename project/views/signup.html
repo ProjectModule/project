@@ -33,8 +33,8 @@
                     <input type="number" id="signup_mbnumber" name="signup_mbnumber" data-bind="value:mbnumber" placeholder="Mobile Number" maxlength="10" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
                 </p>
                 <p>
-                    <span><input type="radio" id="signup_male" data-bind="value:gender_male" value="Male" name="gender"/>Male</span>
-                    <span style="margin-left:43px;"><input type="radio" id="signup_female" value="Female" data-bind="value:gender_female" name="gender"/>Female</span>
+                    <span><input type="radio" id="signup_male" data-bind="value:gender_male,click:setVisiblity" value="Male" name="gender"/>Male</span>
+                    <span style="margin-left:43px;"><input type="radio" id="signup_female" value="Female" data-bind="value:gender_female,click:setVisiblity" name="gender"/>Female</span>
                 </p>
                 <p>
                     <select id="myselect" style="width:100%;height:30px;display:block" data-bind="value:occupation">
