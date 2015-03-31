@@ -217,7 +217,7 @@ var app = (function(win){
         
         cameraError:function(message)
         {
-            navigator.notification.alert(message,function(){},"Image/Upload Failed","OK");
+            navigator.notification.alert("Camera Capture "+message,function(){},"Image/Upload Failed","OK");
         },
         
         gallery:function()
@@ -248,7 +248,7 @@ var app = (function(win){
         
         galleryError:function(messsage)
         {
-            navigator.notification.alert(messsage,function(){},"Image/Upload Failed","OK");
+            navigator.notification.alert("Gallery "+messsage,function(){},"Image/Upload Failed","OK");
         }
     }
     
