@@ -185,6 +185,7 @@ var app = (function(win){
         
     }
     
+    /* Use camera functionality */
     function cameraFunction(){}
     cameraFunction.prototype={
         
