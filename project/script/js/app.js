@@ -191,7 +191,6 @@ var app = (function(win){
         
         camera:function()
         {
-            alert("camera");
             var that = this;
             try
             {
@@ -222,7 +221,6 @@ var app = (function(win){
         
         gallery:function()
         {
-            alert("gallery");
             var that = this;
             try
             {
