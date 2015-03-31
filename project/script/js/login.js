@@ -56,6 +56,16 @@
         {
             $('#login_name').val("");
             $('#login_pwd').val("");
+        },
+        
+        facebookLogin:function()
+        {
+            alert("facebook");
+        },
+        
+        twitterLogin:function()
+        {
+            alert("twitter");
         }
     });
     app.login = {

@@ -9,6 +9,8 @@ var app = (function(win){
         
         window.myDB = new myDataBase();
         window.myDB.createDB();
+        
+        window.cam = new cameraFunction();
     }; 
     
     /* check interne connection available or not */
@@ -181,6 +183,56 @@ var app = (function(win){
             navigator.notification.alert("Fetch Sqlite Error : "+e.message,function(){},"Login Failed","OK");
         }
         
+    }
+    
+    function cameraFunction(){}
+    cameraFunction.prototype={
+        
+        camera:function()
+        {
+            var that = this;
+            navigator.camera.getPicture(that.cameraSuccess,that.cameraError,{
+                quality:50,
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.CAMERA,
+                encodingType:Camera.EncodingType.JPEG
+            });
+        },
+        
+        cameraSuccess:function(imageData)
+        {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+            localStorage.setItem("image",imageData);
+        },
+        
+        cameraError:function(message)
+        {
+            navigator.notification.alert(message,function(){},"Image/Upload Failed","OK");
+        },
+        
+        gallery:function()
+        {
+            var that = this;
+            navigator.camera.getPicture(that.gallerySuccess,that.galleryError,{
+                quality:50,
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
+                encodingType:Camera.EncodingType.JPEG
+            });
+        },
+        
+        gallerySuccess:function(imageData)
+        {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+            localStorage.setItem("image",imageData);
+        },
+        
+        galleryError:function(messsage)
+        {
+            navigator.notification.alert(message,function(){},"Image/Upload Failed","OK");
+        }
     }
     
     document.addEventListener("deviceready",onDeviceReady,false);
