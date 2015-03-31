@@ -17,8 +17,7 @@
         name:"",
         inVisible:true,
         show:function()
-        {   
-            /*********************************************Load state data to the dropdownlist*********************************************/
+        {
             
             var dataS = new kendo.data.DataSource({
                 data:["Assam","Jammu and Kashmir","Maharashtra","Uttar Pradesh","Gujarat","Andhra Pradesh","Karnataka","Kerala","West Bengal","Tripura","Chhattisgarh","Punjab","Mizoram","Rajasthan","Goa","Uttarakhand","Arunachal Pradesh","Bihar","Lakshadweep","Jharkhand","Dadra and Nagar Haveli","Orissa","Tamil Nadu","Himachal Pradesh","Haryana","Madhya Pradesh","Delhi","Chandigarh","Daman and Diu","Nagaland","Sikkim","Manipur","Meghalaya","Pondicherry","Jammu & Kashmir","Andaman and Nicobar Islands"]
@@ -28,39 +27,24 @@
                 app.signup.viewModel.setComboBoxData(data);
             });
             
-            /***************************************set radio button functionality*********************************************/
-
+            
             $("#signup_male,#signup_female").on("change",function(){
                 $("#myselect").css("display","block");
             });
             
-            /***************************************Blank the signup field*********************************************/
-            
             app.signup.viewModel.blankSignupField();
 
-            /***************************************Camera functionality call***************************************/
             
             $("#cameraCap").unbind('.myPlugin');
             $('#cameraCap').on("click.myPlugin",function(){
                 window.cam.camera();
             });
             
-            /***************************************Photo gallery functionality call***************************************/
             
             $("#galleryCap").unbind('.myPlugin');
             $('#galleryCap').on("click.myPlugin",function(){
                 window.cam.gallery();
             });
-            
-            
-            /*$("#signup_female").change(function(){
-                $('select option[value="0"]').attr('selected',true);
-                $("select > option[value='3']").css("display","block");
-            });
-            $("#signup_male").change(function(){
-                $('select option[value="0"]').attr('selected',true);
-                $("select > option[value='3']").css("display","none");
-            });*/
         },
         setComboBoxData:function(data)
         {
@@ -73,7 +57,6 @@
         validation:function()
         {
             var that = this;
-            
             var sfname = that.get("firstname"),
                 slname = that.get("lastname"),
                 semail = that.get("email"),
@@ -87,7 +70,7 @@
             
             var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             
-            /*if(sfname === "")
+            if(sfname === "")
             {
                 navigator.notification.alert("Please enter First name",function(){},"Notification","OK");
                 $('#signup_fname').focus();
@@ -161,7 +144,7 @@
                 navigator.notification.alert("Please enter your Address",function(){},"Notification","OK");
                 $('#addressDtl').focus();
                 return;
-            }*/
+            }
             
             if(!window.connection.checkConnection())
             {
@@ -231,54 +214,7 @@
             }
             $('#myImage').attr("src","style/image/myimg.png");
             $("#myselect").css("display","none");
-            
-        },
-        
-        /*cameraFunction:function()
-        {
-            var that = this;
-            navigator.camera.getPicture(that.cameraFunctionSuccess,that.cameraFunctionError,{
-                quality:50,
-                destinationType:Camera.DestinationType.DATA_URL,
-                sourceType:Camera.PictureSourceType.CAMERA,
-                encodingType:Camera.EncodingType.JPEG
-            });
-        },
-        
-        cameraFunctionSuccess:function(imageData)
-        {
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
-            localStorage.setItem("image",imageData);
-        },
-        
-        cameraFunctionError:function(message)
-        {
-             navigator.notification.alert(message,function(){},"Image Upload Failed","OK");
-        },*/
-        
-        /*galleryFunction:function()
-        {
-            var that = this;
-            navigator.camera.getPicture(that.galleryFunctionSuccess,that.galleryFunctionError,{
-                quality:50,
-                destinationType:Camera.DestinationType.DATA_URL,
-                sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
-                encodingType:Camera.EncodingType.JPEG
-            });
-        },
-        
-        galleryFunctionSuccess:function(imageData)
-        {
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
-            localStorage.setItem("image",imageData);
-        },
-        
-        galleryFunctionError:function(message)
-        {
-            navigator.notification.alert(message,function(){},"Image Upload Failed","OK");
-        }*/
+        }
     });
     app.signup = {
         viewModel:new signupViewModel()

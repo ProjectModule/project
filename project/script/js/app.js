@@ -13,7 +13,7 @@ var app = (function(win){
         window.cam = new cameraFunction();
     }; 
     
-    /* check interne connection available or not */
+    
     function connectionCheck(){}
     connectionCheck.prototype = {
         checkConnection:function()
@@ -185,9 +185,9 @@ var app = (function(win){
         
     }
     
-    /* Use camera functionality */
+    
     function cameraFunction(){}
-    cameraFunction.prototype={
+    cameraFunction.prototype = {
         
         camera:function()
         {
