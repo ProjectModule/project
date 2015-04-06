@@ -27,7 +27,7 @@ var app = (function(win){
         }
         catch(ex)
         {
-            console.log(ex.messgae);
+            alert(ex.messgae);
         }  
     };
     
@@ -209,6 +209,7 @@ var app = (function(win){
         
         camera:function()
         {
+            alert("camera");
             var that = this;
             try
             {
@@ -239,6 +240,7 @@ var app = (function(win){
         
         gallery:function()
         {
+            alert("gallery");
             var that = this;
             try
             {
