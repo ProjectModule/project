@@ -5,6 +5,16 @@
 <script>
     function loginStatus()
     {
-        alert("fine");
+       FB.login(function(response){
+                if(response.authResponse.accessToken && response.authResponse.userId)
+                {
+                    alert("login");
+                }
+                else
+                {
+                    alert("not logged in");
+                    
+                }
+            },{scope:'email'});
     }
 </script>

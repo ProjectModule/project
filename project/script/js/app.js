@@ -16,11 +16,12 @@ var app = (function(win){
     
     var fbInit = function()
     {
+        console.log(FB);
       try
         {
            FB.init({
             appId:"1396043510711208",
-            status:"false",
+            status:true,
             nativeInterface: CDV.FB,
             useCachedDialogs: false
            }); 
@@ -70,13 +71,13 @@ var app = (function(win){
             {
                 if(window.sqlitePlugin !== undefined)
                 {
-                    alert("sqlite plugins in Android Phone");
+                   // alert("sqlite plugins in Android Phone");
                     db = window.sqlitePlugin.openDatabase("SQLDB");
                     that.createTable();
                 }
                 else
                 {
-                    alert("webSql in Android Phone");
+                    //alert("webSql in Android Phone");
                     db = window.openDatabase("SQLDB","1.1","Hybrid Database",1000000);
                     that.createTable();
                 }
@@ -209,7 +210,6 @@ var app = (function(win){
         
         camera:function()
         {
-            alert("camera");
             var that = this;
             try
             {
@@ -240,7 +240,6 @@ var app = (function(win){
         
         gallery:function()
         {
-            alert("gallery");
             var that = this;
             try
             {

@@ -34,7 +34,7 @@
             app.signup.viewModel.blankSignupField();
 
             
-            $("#cameraCap").unbind('.myPlugin');
+           /* $("#cameraCap").unbind('.myPlugin');
             $('#cameraCap').on("click.myPlugin",function(){
                 window.cam.camera();
             });
@@ -43,7 +43,7 @@
             $("#galleryCap").unbind('.myPlugin');
             $('#galleryCap').on("click.myPlugin",function(){
                 window.cam.gallery();
-            });
+            });*/
         },
         setComboBoxData:function(data)
         {
