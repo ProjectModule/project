@@ -4,6 +4,7 @@ var app = (function(win){
     var db;
     var onDeviceReady = function()
     {
+        fbInit();
         window.connection = new connectionCheck();
         window.connection.checkConnection();
         
@@ -12,6 +13,23 @@ var app = (function(win){
         
         window.cam = new cameraFunction();
     }; 
+    
+    var fbInit = function()
+    {
+      try
+        {
+           FB.init({
+            appId:"1396043510711208",
+            status:"false",
+            nativeInterface: CDV.FB,
+            useCachedDialogs: false
+           }); 
+        }
+        catch(ex)
+        {
+            console.log(ex.messgae);
+        }  
+    };
     
     
     function connectionCheck(){}

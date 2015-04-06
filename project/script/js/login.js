@@ -60,7 +60,7 @@
         
         facebookLogin:function()
         {
-            alert("facebook");
+            app.apps.navigate("views/test.html");
         },
         
         twitterLogin:function()
