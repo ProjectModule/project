@@ -4,7 +4,9 @@ var app = (function(win){
     var db;
     var onDeviceReady = function()
     {
-        fbInit();
+        window.fb = new facebookConnect();
+        window.fb.run();
+        
         window.connection = new connectionCheck();
         window.connection.checkConnection();
         
@@ -14,24 +16,30 @@ var app = (function(win){
         window.cam = new cameraFunction();
     }; 
     
-    var fbInit = function()
-    {
-        console.log(FB);
-      try
+    function facebookConnect(){}
+    facebookConnect.prototype = {
+        run:function()
         {
-           FB.init({
-            appId:"1396043510711208",
-            status:true,
-            nativeInterface: CDV.FB,
-            useCachedDialogs: false
-           }); 
+            try
+            {
+                FB.init({
+                appId:"1410862485895977",
+                status:true,
+                nativeInterface: CDV.FB,
+                useCachedDialogs: false
+                }); 
+            }
+            catch(ex)
+            {
+                alert(JSON.stringify(ex));
+            }  
+        },
+        
+        loginStatus:function()
+        {
+            alert(JSON.stringify(FB));
         }
-        catch(ex)
-        {
-            alert(ex.messgae);
-        }  
-    };
-    
+    }
     
     function connectionCheck(){}
     connectionCheck.prototype = {
@@ -66,7 +74,6 @@ var app = (function(win){
         {
             var that = this;
             
-            console.log(window.device);
             if(device.platform === "Android")
             {
                 if(window.sqlitePlugin !== undefined)
