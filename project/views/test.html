@@ -1,10 +1,22 @@
 <div data-role="view">
     <a data-role="button" data-click="loginStatus">Login Status</a>
+    <a data-role="button" data-click="login">Login</a>
+    <a data-role="button" data-click="loginAPI">Login API</a>
 </div>
 
 <script>
     function loginStatus()
     {
         window.fb.loginStatus();
+    }
+    
+    function loginAPI()
+    {
+        window.fb.getLoginApi();
+    }
+    
+    function login()
+    {
+        window.fb.login();
     }
 </script>

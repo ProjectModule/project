@@ -41,6 +41,22 @@ var app = (function(win){
                     alert("You are not logged in");
                 }
             });
+        },
+        
+        getLoginApi:function()
+        {
+            FB.api('/me', {fields: 'last_name'}, function(response) {
+                alert(JSON.stringify(response));
+            });
+
+        },
+        
+        login:function()
+        {
+            FB.login(function(response){
+                alert(JSON.stringify(response));
+                
+            },{scope:'email'});
         }
     }
     
