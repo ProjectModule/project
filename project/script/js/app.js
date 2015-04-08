@@ -21,10 +21,11 @@ var app = (function(win){
         run:function()
         {
             FB.init({
-                appId: "204075246457176",
+                appId: "1396043510711208",
                 status:"false",
                 nativeInterface: CDV.FB,
                 useCachedDialogs: false
+                
             });
         },
         
