@@ -20,24 +20,27 @@ var app = (function(win){
     facebookConnect.prototype = {
         run:function()
         {
-            try
-            {
-                FB.init({
-                appId:"1410862485895977",
-                status:true,
+            FB.init({
+                appId: "204075246457176",
+                status:"false",
                 nativeInterface: CDV.FB,
                 useCachedDialogs: false
-                }); 
-            }
-            catch(ex)
-            {
-                alert(JSON.stringify(ex));
-            }  
+            });
         },
         
         loginStatus:function()
         {
-            alert(JSON.stringify(FB));
+            FB.getLoginStatus(function(response){
+                
+                if(response.status === "connected")
+                {
+                    alert("login");
+                }
+                else
+                {
+                    alert("You are not logged in");
+                }
+            });
         }
     }
     
