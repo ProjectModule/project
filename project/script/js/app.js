@@ -46,7 +46,7 @@ var app = (function(win){
         
         getLoginApi:function()
         {
-            FB.api('/me', {fields: 'last_name'}, function(response) {
+            FB.api('/me', function(response) {
                 alert(JSON.stringify(response));
             });
 
@@ -58,6 +58,13 @@ var app = (function(win){
                 alert(JSON.stringify(response));
                 
             },{scope:'email'});
+        },
+        
+        logout:function()
+        {
+             FB.logout(function(response){
+                alert(JSON.stringify(response));
+            });
         }
     }
     

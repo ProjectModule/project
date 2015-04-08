@@ -2,6 +2,7 @@
     <a data-role="button" data-click="loginStatus">Login Status</a>
     <a data-role="button" data-click="login">Login</a>
     <a data-role="button" data-click="loginAPI">Login API</a>
+    <a data-role="button" data-click="logout">Logout</a>
 </div>
 
 <script>
@@ -16,6 +17,11 @@
     }
     
     function login()
+    {
+        window.fb.login();
+    }
+    
+    function logout()
     {
         window.fb.login();
     }
