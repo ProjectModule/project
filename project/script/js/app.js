@@ -63,7 +63,7 @@ var app = (function(win){
         logout:function()
         {
              FB.logout(function(response){
-                alert(JSON.stringify(response));
+                app.apps.navigate("index.html");
             });
         }
     }
