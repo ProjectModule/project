@@ -4,6 +4,7 @@ var app = (function(win){
     var db;
     var onDeviceReady = function()
     {
+        console.log();
         window.fb = new facebookConnect();
         window.fb.run();
         
@@ -99,7 +100,7 @@ var app = (function(win){
                     if(response.status === "unknown")
                     {
                         alert("LOGOUT MY APP");
-                        app.apps.navigate("views/test.html");
+                        mobileApp.navigate("./index.html");
                     }
                 });
                 
