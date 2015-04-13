@@ -97,11 +97,12 @@ var app = (function(win){
                     /*alert(JSON.stringify(response));
                     app.apps.navigate('index.html');*/
                     
-                    if(response.status === "unknown")
-                    {
+                    //if(response.status === "unknown")
+                    //{
                         alert("LOGOUT MY APP");
-                        mobileApp.navigate("./index.html");
-                    }
+                        //mobileApp.navigate("./index.html");
+                        return response.status;
+                    //}
                 });
                 
             }

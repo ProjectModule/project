@@ -29,7 +29,12 @@
             if(status === "fbLogin")
             {
                 alert("enter");
-                window.fb.myFBlogout();
+                var backst = window.fb.myFBlogout();
+                alert("my new status "+backst);
+                if(backst === "unknown")
+                {
+                   app.apps.navigate("index.html"); 
+                }
             }
             else
             {
