@@ -60,10 +60,15 @@ var app = (function(win){
         
         getLoginApi:function()
         {
+            var FBDataParam = [];
             try
             {
                 FB.api('/me', function(response) {
                     alert(JSON.stringify(response));
+                    FBDataParam['email']=response.email;
+                    FBDataParam['gender']=response.gender;
+                    FBDataParam['name']=response.name;
+                    alert(JSON.stringify(FBDataParam));
                 });
             }
             catch(ex)
