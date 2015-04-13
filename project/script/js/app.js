@@ -87,7 +87,7 @@ var app = (function(win){
             }
         },
         
-        logout:function()
+        myFBlogout:function()
         {
             alert("logout function");
             try

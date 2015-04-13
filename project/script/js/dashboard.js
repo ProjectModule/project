@@ -29,7 +29,7 @@
             if(status === "fbLogin")
             {
                 alert("enter");
-                window.fb.logout();
+                window.fb.myFBlogout();
             }
             else
             {
