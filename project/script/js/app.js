@@ -93,9 +93,15 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                    alert(JSON.stringify(response));
-                    app.apps.navigate('index.html');
+                    /*alert(JSON.stringify(response));
+                    app.apps.navigate('index.html');*/
+                    
+                    if(response.status === "unknown")
+                    {
+                        alert("LOGOUT MY APP");
+                    }
                 });
+                
             }
             catch(ex)
             {
