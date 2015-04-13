@@ -71,11 +71,11 @@ var app = (function(win){
                     dParam['FBgender'] = response.gender;
                     dParam['FBname'] = response.name;
                     
-                    localStorage.setItem("FBID",dParam['FBid']);
-                    localStorage.setItem("FBLINK",dParam['FBlink']);
-                    localStorage.setItem("FBEMAIL",dParam['FBemail']);
-                    localStorage.setItem("FBGENDER",dParam['FBgender']);
-                    localStorage.setItem("FBNAME",dParam['FBname']);
+                    localStorage.setItem("FBID",response.id);
+                    localStorage.setItem("FBLINK",response.link);
+                    localStorage.setItem("FBEMAIL",response.email);
+                    localStorage.setItem("FBGENDER",response.gender);
+                    localStorage.setItem("FBNAME",response.name);
                     
                     
                     
