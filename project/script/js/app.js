@@ -94,6 +94,7 @@ var app = (function(win){
             {
                 FB.logout(function(response){
                     alert(JSON.stringify(response));
+                    app.apps.navigate('index.html');
                 });
             }
             catch(ex)
