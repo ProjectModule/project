@@ -92,7 +92,7 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                    app.apps.navigate("index.html ");
+                    app.apps.navigate("index.html");
                 });
             }
             catch(ex)
