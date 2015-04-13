@@ -77,6 +77,7 @@ var app = (function(win){
             try
             {
                 FB.login(function(response){
+                    alert(JSON.stringify(response));
                 },{scope:'email,publish_actions,user_friends,user_likes'});
             }
             catch(ex)
