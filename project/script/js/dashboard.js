@@ -34,7 +34,7 @@
             {
                 localStorage.setItem("LoginUserName","");
                 localStorage.setItem("LoginUserEmail","");
-                localStorage.setItem("LoginStatus",false);
+                localStorage.setItem("myLoginStatus",false);
                 localStorage.setItem("userLoginBy","");
                 localStorage.setItem("image","");
                 app.apps.navigate("views/home.html");

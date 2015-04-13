@@ -1,10 +1,9 @@
 var app = (function(win){
     "use strict";
     
-    var db;
+    var db,mobileApp;
     var onDeviceReady = function()
     {
-        console.log();
         window.fb = new facebookConnect();
         window.fb.run();
         
@@ -65,10 +64,12 @@ var app = (function(win){
             {
                 FB.api('/me', function(response) {
                     alert(JSON.stringify(response));
+                    FBDataParam['id']=response.id;
+                    FBDataParam['link']=response.link;
                     FBDataParam['email']=response.email;
                     FBDataParam['gender']=response.gender;
                     FBDataParam['name']=response.name;
-                    alert(FBDataParam['email']);
+                    alert(FBDataParam['link']);
                 });
             }
             catch(ex)
@@ -81,11 +82,23 @@ var app = (function(win){
         login:function(data)
         {
             try
-            {
+            {  
+                var FBDataParam = [];
                 FB.login(function(response){
-                    localStorage.setItem("userLoginBy",data);
-                    localStorage.setItem("LoginStatus",true);
-                    app.apps.navigate("views/dashboard.html");
+                    
+                    if (response.authResponse)
+                    {
+                        FB.api('/me', function(response) {
+                            alert(JSON.stringify(response));
+                            FBDataParam['email']=response.email;
+                            FBDataParam['gender']=response.gender;
+                            FBDataParam['name']=response.name;
+                        });
+                        alert(FBDataParam['name']);
+                        localStorage.setItem("userLoginBy",data);
+                        localStorage.setItem("myLoginStatus",true);
+                        app.apps.navigate("views/dashboard.html");
+                    }
                 },{scope:'email,user_likes'});
             }
             catch(ex)
@@ -95,13 +108,12 @@ var app = (function(win){
         },
         
         myFBlogout:function()
-        {
-            
+        { 
             try
             {
                 localStorage.setItem("LoginUserName","");
                 localStorage.setItem("LoginUserEmail","");
-                localStorage.setItem("LoginStatus",false);
+                localStorage.setItem("myLoginStatus",false);
                 localStorage.setItem("userLoginBy","");
                 localStorage.setItem("image","");
                 
@@ -213,7 +225,7 @@ var app = (function(win){
 
             localStorage.setItem("LoginUserName",username);
             localStorage.setItem("LoginUserEmail",useremail);
-            localStorage.setItem("LoginStatus",true);
+            localStorage.setItem("myLoginStatus",true);
             localStorage.setItem('userLoginBy','sysLogin');
 
             setTimeout(function(){ 
@@ -357,7 +369,15 @@ var app = (function(win){
     
     document.addEventListener("deviceready",onDeviceReady,false);
     
-    var mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/home.html"});
+    if(localStorage.getItem('myLoginStatus') === true)
+    {
+        mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/test.html"});
+    }
+    else
+    {
+        mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/home.html"});
+    }
+    
     return{
         apps:mobileApp
     };
