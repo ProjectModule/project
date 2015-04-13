@@ -58,9 +58,9 @@
             $('#login_pwd').val("");
         },
         
-        facebookLogin:function(e)
+        facebookLogin:function()
         {
-            window.fb.login(e.button.data().id);
+            window.fb.myFBlogin();
         },
         
         twitterLogin:function()

@@ -35,60 +35,7 @@ var app = (function(win){
                alert(ex.message); 
             }
         },
-        
-        loginStatus:function()
-        {
-            try
-            {
-                FB.getLoginStatus(function(response){
-                
-                    if(response.status === "connected")
-                    {
-                        alert("login");
-                    }
-                    else
-                    {
-                        alert("You are not logged in");
-                    }
-                });
-            }
-            catch(ex)
-            {
-                alert(ex.message);
-            }
-        },
-        
-        getLoginApi:function()
-        {
-            try
-            {
-                FB.api('/me', function(response) {
-                    alert(JSON.stringify(response));
-                   
-                    localStorage.setItem("FBID",response.id);
-                    localStorage.setItem("FBLINK",response.link);
-                    localStorage.setItem("FBEMAIL",response.email);
-                    localStorage.setItem("FBGENDER",response.gender);
-                    localStorage.setItem("FBNAME",response.name);
-                    
-                    
-                    
-                    alert(localStorage.getItem('FBID'));
-                    alert(localStorage.getItem('FBLINK'));
-                    alert(localStorage.getItem('FBEMAIL'));
-                    alert(localStorage.getItem('FBGENDER'));
-                    alert(localStorage.getItem('FBNAME'));
-                });
-                
-            }
-            catch(ex)
-            {
-                alert(ex.message);
-            }
-
-        },
-        
-        login:function(data)
+        myFBlogin:function()
         {
             try
             { 
@@ -113,22 +60,20 @@ var app = (function(win){
                 alert(ex.message);
             }
         },
-        
         myFBlogout:function()
         { 
             try
             {
                 localStorage.setItem("myLoginStatus",false);
-                localStorage.setItem("FBid","");
-                localStorage.setItem("FBlink","");
-                localStorage.setItem("FBemail","");
-                localStorage.setItem("FBgender","");
-                localStorage.setItem("FBname","");
+                localStorage.setItem("FBID","");
+                localStorage.setItem("FBLINK","");
+                localStorage.setItem("FBEMAIL","");
+                localStorage.setItem("FBGENDER","");
+                localStorage.setItem("FBNAME","");
                 
                 FB.logout(function(response){
                    app.apps.navigate("views/home.html");
                 });
-                
             }
             catch(ex)
             {

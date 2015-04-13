@@ -9,23 +9,9 @@
            app.signup.viewModel.blankSignupField();
            app.login.viewModel.blankLoginField();
         },
-        Getdata:function()
-        {
-            try
-            {
-
-                alert(localStorage.getItem("userLoginBy"));
-            }
-            catch(e)
-            {
-                alert(e.message);
-            }
-        },
         myAppLogout:function()
         {
             var status = localStorage.getItem("userLoginBy");
-            alert("LoginBy "+status);
-            
             if(status === "fbLogin")
             {
                 window.fb.myFBlogout();
@@ -39,10 +25,6 @@
                 localStorage.setItem("image","");
                 app.apps.navigate("views/home.html");
             }
-        },
-        myApi:function()
-        {
-            window.fb.getLoginApi();
         },
         showData:function()
         {
