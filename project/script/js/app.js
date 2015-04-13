@@ -72,12 +72,24 @@ var app = (function(win){
                     dParam['FBname'] = response.name;
                     
                     localStorage.setItem("FBID",dParam['FBid']);
+                    localStorage.setItem("FBLINK",dParam['FBlink']);
+                    localStorage.setItem("FBEMAIL",dParam['FBemail']);
+                    localStorage.setItem("FBGENDER",dParam['FBgender']);
+                    localStorage.setItem("FBNAME",dParam['FBname']);
+                    
+                    
+                    
+                    
                     alert("id : "+dParam['FBid']);
             alert("link : "+localStorage.getItem('link'));
             alert("name : "+dParam['FBlink']);
             alert("email : "+dParam['FBemail']);
             alert("gender : "+dParam['FBname']);
                     alert(localStorage.getItem('FBID'));
+                    alert(localStorage.getItem('FBLINK'));
+                    alert(localStorage.getItem('FBEMAIL'));
+                    alert(localStorage.getItem('FBGENDER'));
+                    alert(localStorage.getItem('FBNAME'));
                 });
                 
             }
