@@ -14,6 +14,7 @@ var app = (function(win){
         window.myDB.createDB();
         
         window.cam = new cameraFunction();
+        
     }; 
     
     function facebookConnect(){}
@@ -68,6 +69,11 @@ var app = (function(win){
                     localStorage.setItem("FBemail",response.email);
                     localStorage.setItem("FBgender",response.gender);
                     localStorage.setItem("FBname",response.name);
+                    alert("id : "+localStorage.getItem('id'));
+            alert("link : "+localStorage.getItem('link'));
+            alert("name : "+localStorage.getItem('name'));
+            alert("email : "+localStorage.getItem('email'));
+            alert("gender : "+localStorage.getItem('gender'));
                 });
             }
             catch(ex)
@@ -85,7 +91,6 @@ var app = (function(win){
                     if (response.authResponse)
                     {
                         FB.api('/me', function(response) {
-                            alert(JSON.stringify(response));
                             localStorage.setItem("FBid",response.id);
                             localStorage.setItem("FBlink",response.link);
                             localStorage.setItem("FBemail",response.email);
