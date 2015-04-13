@@ -46,11 +46,11 @@
         },
         showData:function()
         {
-            alert("id : "+localStorage.getItem('id'));
-            alert("link : "+localStorage.getItem('link'));
-            alert("name : "+localStorage.getItem('name'));
-            alert("email : "+localStorage.getItem('email'));
-            alert("gender : "+localStorage.getItem('gender'));
+            alert(localStorage.getItem('FBID'));
+            alert(localStorage.getItem('FBLINK'));
+            alert(localStorage.getItem('FBEMAIL'));
+            alert(localStorage.getItem('FBGENDER'));
+            alert(localStorage.getItem('FBNAME'));
         }
     });
     app.dashboard = {

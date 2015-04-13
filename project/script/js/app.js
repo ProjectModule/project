@@ -81,10 +81,12 @@ var app = (function(win){
                     
                     
                     alert("id : "+dParam['FBid']);
-            alert("link : "+localStorage.getItem('link'));
-            alert("name : "+dParam['FBlink']);
-            alert("email : "+dParam['FBemail']);
-            alert("gender : "+dParam['FBname']);
+                    alert("link : "+localStorage.getItem('link'));
+                    alert("name : "+dParam['FBlink']);
+                    alert("email : "+dParam['FBemail']);
+                    alert("gender : "+dParam['FBname']);
+                    
+                    
                     alert(localStorage.getItem('FBID'));
                     alert(localStorage.getItem('FBLINK'));
                     alert(localStorage.getItem('FBEMAIL'));
@@ -119,11 +121,12 @@ var app = (function(win){
                             dParam['FBemail'] = response.email;
                             dParam['FBgender'] = response.gender;
                             dParam['FBname'] = response.name;
-                            localStorage.setItem("FBid",dParam['FBid']);
-                            localStorage.setItem("FBlink",dParam['FBlink']);
-                            localStorage.setItem("FBemail",dParam['FBemail']);
-                            localStorage.setItem("FBgender",dParam['FBgender']);
-                            localStorage.setItem("FBname",dParam['FBname']);
+
+                            localStorage.setItem("FBID",dParam['FBid']);
+                            localStorage.setItem("FBLINK",dParam['FBlink']);
+                            localStorage.setItem("FBEMAIL",dParam['FBemail']);
+                            localStorage.setItem("FBGENDER",dParam['FBgender']);
+                            localStorage.setItem("FBNAME",dParam['FBname']);
                         });
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
