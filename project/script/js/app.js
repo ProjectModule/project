@@ -68,7 +68,7 @@ var app = (function(win){
                     FBDataParam['email']=response.email;
                     FBDataParam['gender']=response.gender;
                     FBDataParam['name']=response.name;
-                    alert(JSON.stringify(FBDataParam));
+                    alert(FBDataParam['email']);
                 });
             }
             catch(ex)
@@ -84,6 +84,7 @@ var app = (function(win){
             {
                 FB.login(function(response){
                     localStorage.setItem("userLoginBy",data);
+                    localStorage.setItem("LoginStatus",true);
                     app.apps.navigate("views/dashboard.html");
                 },{scope:'email,user_likes'});
             }
@@ -95,9 +96,15 @@ var app = (function(win){
         
         myFBlogout:function()
         {
-            alert("logout function");
+            
             try
             {
+                localStorage.setItem("LoginUserName","");
+                localStorage.setItem("LoginUserEmail","");
+                localStorage.setItem("LoginStatus",false);
+                localStorage.setItem("userLoginBy","");
+                localStorage.setItem("image","");
+                
                 FB.logout(function(response){
                    app.apps.navigate("views/home.html");
                 });
