@@ -55,6 +55,7 @@
         
         validation:function()
         {
+            console.log(navigator);
             var that = this;
             var sfname = that.get("firstname"),
                 slname = that.get("lastname"),

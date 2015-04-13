@@ -62,9 +62,16 @@ var app = (function(win){
         
         logout:function()
         {
-             FB.logout(function(response){
-                app.apps.navigate("index.html");
-            });
+            try
+            {
+                FB.logout(function(response){
+                    app.apps.navigate("index.html ");
+                });
+            }
+            catch(ex)
+            {
+                alert(ex.message);
+            }
         }
     }
     
