@@ -79,7 +79,7 @@ var app = (function(win){
             {
                 FB.login(function(response){
                     localStorage.setItem("userLoginBy",data);
-                    app.apps.navigate("views/dashboard.html");
+                    app.apps.navigate("views/test.html");
                 },{scope:'email,user_likes'});
             }
             catch(ex)
@@ -94,15 +94,7 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                    /*alert(JSON.stringify(response));
-                    app.apps.navigate('index.html');*/
-                    
-                    //if(response.status === "unknown")
-                    //{
-                        alert("LOGOUT MY APP");
-                        //mobileApp.navigate("./index.html");
-                        return response.status;
-                    //}
+                   app.apps.navigate("index.html");
                 });
                 
             }
