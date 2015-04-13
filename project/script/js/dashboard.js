@@ -39,6 +39,10 @@
                 localStorage.setItem("image","");
                 app.apps.navigate("views/home.html");
             }
+        },
+        myApi:function()
+        {
+            window.fb.getLoginApi();
         }
     });
     app.dashboard = {
