@@ -62,29 +62,15 @@ var app = (function(win){
         {
             try
             {
-                var dParam = [];
                 FB.api('/me', function(response) {
                     alert(JSON.stringify(response));
-                    dParam['FBid'] = response.id;
-                    dParam['FBlink'] = response.link;
-                    dParam['FBemail'] = response.email;
-                    dParam['FBgender'] = response.gender;
-                    dParam['FBname'] = response.name;
-                    
+                   
                     localStorage.setItem("FBID",response.id);
                     localStorage.setItem("FBLINK",response.link);
                     localStorage.setItem("FBEMAIL",response.email);
                     localStorage.setItem("FBGENDER",response.gender);
                     localStorage.setItem("FBNAME",response.name);
                     
-                    
-                    
-                    
-                    alert("id : "+dParam['FBid']);
-                    alert("link : "+localStorage.getItem('link'));
-                    alert("name : "+dParam['FBlink']);
-                    alert("email : "+dParam['FBemail']);
-                    alert("gender : "+dParam['FBname']);
                     
                     
                     alert(localStorage.getItem('FBID'));
@@ -110,23 +96,11 @@ var app = (function(win){
                     if (response.authResponse)
                     {
                         FB.api('/me', function(response) {
-                            /*localStorage.setItem("FBid",response.id);
-                            localStorage.setItem("FBlink",response.link);
-                            localStorage.setItem("FBemail",response.email);
-                            localStorage.setItem("FBgender",response.gender);
-                            localStorage.setItem("FBname",response.name);*/
-                            
-                            dParam['FBid'] = response.id;
-                            dParam['FBlink'] = response.link;
-                            dParam['FBemail'] = response.email;
-                            dParam['FBgender'] = response.gender;
-                            dParam['FBname'] = response.name;
-
-                            localStorage.setItem("FBID",dParam['FBid']);
-                            localStorage.setItem("FBLINK",dParam['FBlink']);
-                            localStorage.setItem("FBEMAIL",dParam['FBemail']);
-                            localStorage.setItem("FBGENDER",dParam['FBgender']);
-                            localStorage.setItem("FBNAME",dParam['FBname']);
+                            localStorage.setItem("FBID",response.id);
+                            localStorage.setItem("FBLINK",response.link);
+                            localStorage.setItem("FBEMAIL",response.email);
+                            localStorage.setItem("FBGENDER",response.gender);
+                            localStorage.setItem("FBNAME",response.name);
                         });
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
