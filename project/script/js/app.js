@@ -84,7 +84,14 @@ var app = (function(win){
                 FB.login(function(response){
                     if (response.authResponse)
                     {
-                        app.apps.getLoginApi();
+                        FB.api('/me', function(response) {
+                            alert(JSON.stringify(response));
+                            localStorage.setItem("FBid",response.id);
+                            localStorage.setItem("FBlink",response.link);
+                            localStorage.setItem("FBemail",response.email);
+                            localStorage.setItem("FBgender",response.gender);
+                            localStorage.setItem("FBname",response.name);
+                        });
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
                         app.apps.navigate("views/dashboard.html");
