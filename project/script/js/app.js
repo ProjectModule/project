@@ -70,12 +70,16 @@ var app = (function(win){
                     dParam['FBemail'] = response.email;
                     dParam['FBgender'] = response.gender;
                     dParam['FBname'] = response.name;
+                    
+                    localStorage.setItem("FBID",dParam['FBid']);
                     alert("id : "+dParam['FBid']);
             alert("link : "+localStorage.getItem('link'));
             alert("name : "+dParam['FBlink']);
             alert("email : "+dParam['FBemail']);
             alert("gender : "+dParam['FBname']);
+                    alert(localStorage.getItem('FBID'));
                 });
+                
             }
             catch(ex)
             {
