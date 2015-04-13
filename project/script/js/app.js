@@ -62,13 +62,19 @@ var app = (function(win){
         {
             try
             {
+                var dParam = [];
                 FB.api('/me', function(response) {
                     alert(JSON.stringify(response));
-                    localStorage.setItem("FBid",response.id);
-                    localStorage.setItem("FBlink",response.link);
-                    localStorage.setItem("FBemail",response.email);
-                    localStorage.setItem("FBgender",response.gender);
-                    localStorage.setItem("FBname",response.name);
+                    dParam['FBid'] = response.id;
+                    dParam['FBlink'] = response.link;
+                    dParam['FBemail'] = response.email;
+                    dParam['FBgender'] = response.gender;
+                    dParam['FBname'] = response.name;
+                    localStorage.setItem("FBid",dParam['FBid']);
+                    localStorage.setItem("FBlink",dParam['FBlink']);
+                    localStorage.setItem("FBemail",dParam['FBemail']);
+                    localStorage.setItem("FBgender",dParam['FBgender']);
+                    localStorage.setItem("FBname",dParam['FBname']);
                     alert("id : "+localStorage.getItem('id'));
             alert("link : "+localStorage.getItem('link'));
             alert("name : "+localStorage.getItem('name'));
