@@ -93,7 +93,7 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                    app.apps.navigate("index.html");
+                    alert(JSON.stringify(response));
                 });
             }
             catch(ex)
