@@ -28,6 +28,7 @@
             
             if(status === "fbLogin")
             {
+                alert("enter");
                 window.fb.logout();
             }
             else

@@ -89,6 +89,7 @@ var app = (function(win){
         
         logout:function()
         {
+            alert("logout function");
             try
             {
                 FB.logout(function(response){
