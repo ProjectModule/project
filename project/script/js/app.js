@@ -20,44 +20,69 @@ var app = (function(win){
     facebookConnect.prototype = {
         run:function()
         {
-            FB.init({
-                appId: "828834967202957",
-                status:"false",
-                nativeInterface: CDV.FB,
-                useCachedDialogs: false
-                
-            });
+           try
+            {
+                FB.init({
+                    appId: "828834967202957",
+                    status:"false",
+                    nativeInterface: CDV.FB,
+                    useCachedDialogs: false
+                });
+            }
+            catch(ex)
+            {
+               alert(ex.message); 
+            }
         },
         
         loginStatus:function()
         {
-            FB.getLoginStatus(function(response){
+            try
+            {
+                FB.getLoginStatus(function(response){
                 
-                if(response.status === "connected")
-                {
-                    alert("login");
-                }
-                else
-                {
-                    alert("You are not logged in");
-                }
-            });
+                    if(response.status === "connected")
+                    {
+                        alert("login");
+                    }
+                    else
+                    {
+                        alert("You are not logged in");
+                    }
+                });
+            }
+            catch(ex)
+            {
+                alert(ex.message);
+            }
         },
         
         getLoginApi:function()
         {
-            FB.api('/me', function(response) {
-                alert(JSON.stringify(response));
-            });
+            try
+            {
+                FB.api('/me', function(response) {
+                    alert(JSON.stringify(response));
+                });
+            }
+            catch(ex)
+            {
+                alert(ex.message);
+            }
 
         },
         
         login:function()
         {
-            FB.login(function(response){
-                alert(JSON.stringify(response));
-                
-            },{scope:'email'});
+            try
+            {
+                FB.login(function(response){
+                },{scope:'email,publish_actions,user_friends,user_likes'});
+            }
+            catch(ex)
+            {
+                alert(ex.message);
+            }
         },
         
         logout:function()
