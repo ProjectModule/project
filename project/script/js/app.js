@@ -99,6 +99,7 @@ var app = (function(win){
                     if(response.status === "unknown")
                     {
                         alert("LOGOUT MY APP");
+                        app.apps.navigate('index.html');
                     }
                 });
                 
