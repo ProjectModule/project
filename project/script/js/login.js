@@ -11,7 +11,7 @@
            app.apps.navigate("views/signup.html");
         },
         
-        loginValidation:function()
+        loginValidation:function(e)
         {
             var that = this,
                 lusername = that.get("lname"),
@@ -58,9 +58,9 @@
             $('#login_pwd').val("");
         },
         
-        facebookLogin:function()
+        facebookLogin:function(e)
         {
-            app.apps.navigate("views/test.html");
+            window.fb.login(e.button.data().id);
         },
         
         twitterLogin:function()

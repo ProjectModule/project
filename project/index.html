@@ -31,7 +31,7 @@
                         <input type="password" id="login_pwd" name="login_pwd" data-bind="value:lpwd" placeholder="Password" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
                     </p>
                     <p>
-                        <button data-role="button" data-bind="click:loginValidation" style="width:100%;height:45px;">Log In</button>
+                        <a data-role="button" data-id="sysLogin" data-bind="click:loginValidation" style="width:100%;height:45px;">Log In</a>
                     </p>
                     <p style="text-align:center;">
                         <a data-role="button" data-bind="click:signupView" class="newUSer" style="text-decoration:none;font-family:times;">New User Signup ?</a>
@@ -44,7 +44,7 @@
                 </div>
                 <div style="width:100%;height:auto;margin-top:45px;">
                     <p>
-                        <a data-role="button" data-bind="click:facebookLogin" style="width:100%;height:35px;background-image:url('style/image/fb.png');background-repeat:no-repeat;background-size:100% 100%"></a>
+                        <a data-id="fbLogin" data-role="button" data-bind="click:facebookLogin" style="width:100%;height:35px;background-image:url('style/image/fb.png');background-repeat:no-repeat;background-size:100% 100%"></a>
                     </p>
                     <p style="display:none">
                         <a data-role="button" data-bind="click:twitterLogin" style="width:100%;height:35px;background-image:url('style/image/twt.jpg');background-repeat:no-repeat;background-size:100% 100%"></a>

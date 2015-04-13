@@ -2,7 +2,8 @@
     <div data-role="header">
         <div data-role="navbar">
             <span data-role="view-title"></span>
-            <a data-role="button" data-align="right" data-click="logout">Logout</a>
+            <a data-role="button" data-align="right" data-bind="click:myAppLogout">Logout</a>
+            <a data-role="button" data-align="left" data-bind="click:Getdata">GET</a>
         </div>
     </div>
  
@@ -10,16 +11,4 @@
         
     </div>
 </div>
-
-<script>
-    function logout()
-    {
-        localStorage.setItem("LoginUserName","");
-        localStorage.setItem("LoginUserEmail","");
-        localStorage.setItem("LoginStatus",false);
-        localStorage.setItem("image","");
-        app.apps.navigate("index.html");
-    }
-</script>
-
 

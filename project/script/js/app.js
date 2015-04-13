@@ -72,12 +72,13 @@ var app = (function(win){
 
         },
         
-        login:function()
+        login:function(data)
         {
             try
             {
                 FB.login(function(response){
-                    alert(JSON.stringify(response));
+                    localStorage.setItem("userLoginBy",data);
+                    app.apps.navigate("views/dashboard.html");
                 },{scope:'email,user_likes'});
             }
             catch(ex)
@@ -91,6 +92,11 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
+                    localStorage.setItem("LoginUserName","");
+                    localStorage.setItem("LoginUserEmail","");
+                    localStorage.setItem("LoginStatus",false);
+                    localStorage.setItem("userLoginBy","");
+                    localStorage.setItem("image","");
                     app.apps.navigate("index.html ");
                 });
             }
@@ -251,6 +257,7 @@ var app = (function(win){
             if(results.rows.length === 1)
             {
                 setTimeout(function(){ 
+                    localStorage.setItem('userLoginBy','sysLogin');
                     app.apps.navigate("views/dashboard.html");
                     app.apps.hideLoading();
                 }, 2000);

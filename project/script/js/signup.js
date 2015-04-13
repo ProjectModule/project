@@ -16,7 +16,7 @@
         address:'',
         name:"",
         inVisible:true,
-        show:function()
+        show:function(e)
         {
             var dataS = new kendo.data.DataSource({
                 data:["Assam","Jammu and Kashmir","Maharashtra","Uttar Pradesh","Gujarat","Andhra Pradesh","Karnataka","Kerala","West Bengal","Tripura","Chhattisgarh","Punjab","Mizoram","Rajasthan","Goa","Uttarakhand","Arunachal Pradesh","Bihar","Lakshadweep","Jharkhand","Dadra and Nagar Haveli","Orissa","Tamil Nadu","Himachal Pradesh","Haryana","Madhya Pradesh","Delhi","Chandigarh","Daman and Diu","Nagaland","Sikkim","Manipur","Meghalaya","Pondicherry","Jammu & Kashmir","Andaman and Nicobar Islands"]
@@ -206,7 +206,7 @@
             $('#signup_mbnumber').val("");
             $('#myselect').val("0");
             $('#addressDtl').val("");
-            $('#statecombobox').data("kendoDropDownList").value("Select State");
+           // $('#statecombobox').data("kendoDropDownList").value("Select State");
             if($('input[type="radio"]:checked').val() !== undefined)
             {
                 $('#signup_male').prop("checked",false);
