@@ -4,6 +4,8 @@ var app = (function(win){
     var db,mobileApp;
     var onDeviceReady = function()
     {
+        console.log(typeof(localStorage.getItem('myLoginStatus')));
+        console.log(localStorage.getItem('myLoginStatus'));
         window.fb = new facebookConnect();
         window.fb.run();
         
@@ -13,8 +15,7 @@ var app = (function(win){
         window.myDB = new myDataBase();
         window.myDB.createDB();
         
-        window.cam = new cameraFunction();
-        
+        window.cam = new cameraFunction();   
     }; 
     
     function facebookConnect(){}
@@ -52,6 +53,7 @@ var app = (function(win){
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
                         app.apps.navigate("views/dashboard.html");
+                        $('#fbshow').css('display',"block");        /**************************************/
                     }
                 },{scope:'email,user_likes'});
             }
@@ -70,6 +72,7 @@ var app = (function(win){
                 localStorage.setItem("FBEMAIL","");
                 localStorage.setItem("FBGENDER","");
                 localStorage.setItem("FBNAME","");
+                $('#fbshow').css('display',"none");            /**************************************/
                 
                 FB.logout(function(response){
                    app.apps.navigate("views/home.html");

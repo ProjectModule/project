@@ -12,6 +12,7 @@
         myAppLogout:function()
         {
             var status = localStorage.getItem("userLoginBy");
+            
             if(status === "fbLogin")
             {
                 window.fb.myFBlogout();
