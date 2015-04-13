@@ -59,17 +59,15 @@ var app = (function(win){
         
         getLoginApi:function()
         {
-            var FBDataParam = [];
             try
             {
                 FB.api('/me', function(response) {
                     alert(JSON.stringify(response));
-                    FBDataParam['id']=response.id;
-                    FBDataParam['link']=response.link;
-                    FBDataParam['email']=response.email;
-                    FBDataParam['gender']=response.gender;
-                    FBDataParam['name']=response.name;
-                    alert(FBDataParam['link']);
+                    localStorage.setItem("FBid",response.id);
+                    localStorage.setItem("FBlink",response.link);
+                    localStorage.setItem("FBemail",response.email);
+                    localStorage.setItem("FBgender",response.gender);
+                    localStorage.setItem("FBname",response.name);
                 });
             }
             catch(ex)
@@ -82,19 +80,11 @@ var app = (function(win){
         login:function(data)
         {
             try
-            {  
-                var FBDataParam = [];
+            { 
                 FB.login(function(response){
-                    
                     if (response.authResponse)
                     {
-                        FB.api('/me', function(response) {
-                            alert(JSON.stringify(response));
-                            FBDataParam['email']=response.email;
-                            FBDataParam['gender']=response.gender;
-                            FBDataParam['name']=response.name;
-                        });
-                        alert(FBDataParam['name']);
+                        app.apps.getLoginApi();
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
                         app.apps.navigate("views/dashboard.html");
@@ -111,11 +101,12 @@ var app = (function(win){
         { 
             try
             {
-                localStorage.setItem("LoginUserName","");
-                localStorage.setItem("LoginUserEmail","");
                 localStorage.setItem("myLoginStatus",false);
-                localStorage.setItem("userLoginBy","");
-                localStorage.setItem("image","");
+                localStorage.setItem("FBid","");
+                localStorage.setItem("FBlink","");
+                localStorage.setItem("FBemail","");
+                localStorage.setItem("FBgender","");
+                localStorage.setItem("FBname","");
                 
                 FB.logout(function(response){
                    app.apps.navigate("views/home.html");
@@ -369,9 +360,9 @@ var app = (function(win){
     
     document.addEventListener("deviceready",onDeviceReady,false);
     
-    if(localStorage.getItem('myLoginStatus') === true)
+    if(localStorage.getItem('myLoginStatus') === "true")
     {
-        mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/test.html"});
+        mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/dashboard.html"});
     }
     else
     {
