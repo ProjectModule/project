@@ -92,11 +92,6 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                    localStorage.setItem("LoginUserName","");
-                    localStorage.setItem("LoginUserEmail","");
-                    localStorage.setItem("LoginStatus",false);
-                    localStorage.setItem("userLoginBy","");
-                    localStorage.setItem("image","");
                     app.apps.navigate("index.html ");
                 });
             }
@@ -106,6 +101,7 @@ var app = (function(win){
             }
         }
     }
+    
     
     function connectionCheck(){}
     connectionCheck.prototype = {
@@ -203,6 +199,7 @@ var app = (function(win){
             localStorage.setItem("LoginUserName",username);
             localStorage.setItem("LoginUserEmail",useremail);
             localStorage.setItem("LoginStatus",true);
+            localStorage.setItem('userLoginBy','sysLogin');
 
             setTimeout(function(){ 
                 app.apps.navigate("views/dashboard.html");
