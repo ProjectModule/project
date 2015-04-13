@@ -79,7 +79,7 @@ var app = (function(win){
             {
                 FB.login(function(response){
                     localStorage.setItem("userLoginBy",data);
-                    app.apps.navigate("views/test.html");
+                    app.apps.navigate("views/dashboard.html");
                 },{scope:'email,user_likes'});
             }
             catch(ex)
@@ -94,7 +94,7 @@ var app = (function(win){
             try
             {
                 FB.logout(function(response){
-                   app.apps.navigate("index.html");
+                   app.apps.navigate("views/home.html");
                 });
                 
             }
@@ -345,7 +345,7 @@ var app = (function(win){
     
     document.addEventListener("deviceready",onDeviceReady,false);
     
-    var mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:""});
+    var mobileApp = new kendo.mobile.Application(document.body,{skin:"flat",initial:"views/home.html"});
     return{
         apps:mobileApp
     };

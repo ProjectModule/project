@@ -28,13 +28,7 @@
             
             if(status === "fbLogin")
             {
-                alert("enter");
-                var backst = window.fb.myFBlogout();
-                alert("my new status "+backst);
-                if(backst === "unknown")
-                {
-                   app.apps.navigate("index.html"); 
-                }
+                window.fb.myFBlogout();
             }
             else
             {
@@ -43,7 +37,7 @@
                 localStorage.setItem("LoginStatus",false);
                 localStorage.setItem("userLoginBy","");
                 localStorage.setItem("image","");
-                app.apps.navigate("index.html");
+                app.apps.navigate("views/home.html");
             }
         }
     });

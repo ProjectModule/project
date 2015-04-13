@@ -1,0 +1,42 @@
+<div id="login" data-role="view" data-title="Log In" data-layout="login-layout" data-model="app.login.viewModel" data-use-native-scrolling="true">
+        <div data-role="content">
+            <div style="width:90%;height:auto;margin:0px auto;margin-top:10px;">
+                <div style="width:100%;height:auto;">
+                    <p>
+                        <input type="text" id="login_name" name="login_name" data-bind="value:lname" placeholder="Username" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                    </p>
+                    <p>
+                        <input type="password" id="login_pwd" name="login_pwd" data-bind="value:lpwd" placeholder="Password" style="width:100%;height:32px;padding-left:7px;border:1px solid #CCC"/>
+                    </p>
+                    <p>
+                        <a data-role="button" data-id="sysLogin" data-bind="click:loginValidation" style="width:100%;height:45px;">Log In</a>
+                    </p>
+                    <p style="text-align:center;">
+                        <a data-role="button" data-bind="click:signupView" class="newUSer" style="text-decoration:none;font-family:times;">New User Signup ?</a>
+                    </p>
+                </div>
+                <div style="width:90%;margin:0px auto;margin-top:45px;text-align:center">
+                    <hr style="width:45%;float:left;" color="#CCC"/>
+                        <span>OR</span>
+                    <hr style="width:45%;float:right" color="#CCC"/>
+                </div>
+                <div style="width:100%;height:auto;margin-top:45px;">
+                    <p>
+                        <a data-id="fbLogin" data-role="button" data-bind="click:facebookLogin" style="width:100%;height:35px;background-image:url('style/image/fb.png');background-repeat:no-repeat;background-size:100% 100%"></a>
+                    </p>
+                    <p style="display:none">
+                        <a data-role="button" data-bind="click:twitterLogin" style="width:100%;height:35px;background-image:url('style/image/twt.jpg');background-repeat:no-repeat;background-size:100% 100%"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Layout-->
+    <section data-role="layout" data-id="login-layout">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+    </section>
