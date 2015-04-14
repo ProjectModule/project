@@ -51,10 +51,10 @@ var app = (function(win){
                             localStorage.setItem("FBGENDER",response.gender);
                             localStorage.setItem("FBNAME",response.name);
                         });*/
-                        localStorage.setItem("userLoginBy",data);
-                        localStorage.setItem("myLoginStatus",true);
+                       // localStorage.setItem("userLoginBy",data);
+                       // localStorage.setItem("myLoginStatus",true);
                       // $('#fbshow').css('display',"block");        /**************************************/
-                        app.apps.navigate("views/dashboard.html");
+                        app.apps.navigate("views/test.html");
                         
                     }
                 },{scope:'email,user_likes'});
