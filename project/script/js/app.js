@@ -54,7 +54,7 @@ var app = (function(win){
                        // localStorage.setItem("userLoginBy",data);
                        // localStorage.setItem("myLoginStatus",true);
                       // $('#fbshow').css('display',"block");        /**************************************/
-                        app.apps.navigate("views/test.html");
+                        app.apps.navigate("views/dashboard.html");
                         
                     }
                 },{scope:'email,user_likes'});
