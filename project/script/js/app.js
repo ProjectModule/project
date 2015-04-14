@@ -52,8 +52,9 @@ var app = (function(win){
                         });
                         localStorage.setItem("userLoginBy",data);
                         localStorage.setItem("myLoginStatus",true);
-                        app.apps.navigate("views/dashboard.html");
                         $('#fbshow').css('display',"block");        /**************************************/
+                        app.apps.navigate("views/dashboard.html");
+                        
                     }
                 },{scope:'email,user_likes'});
             }
