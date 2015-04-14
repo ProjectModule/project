@@ -36,7 +36,7 @@ var app = (function(win){
                alert(ex.message); 
             }
         },
-        myFBlogin:function()
+        myFBlogin:function(data)
         {
             try
             { 
@@ -44,16 +44,16 @@ var app = (function(win){
                     if (response.authResponse)
                     {
                         alert("enter");
-                        /*FB.api('/me', function(response) {
+                        FB.api('/me', function(response) {
                             localStorage.setItem("FBID",response.id);
                             localStorage.setItem("FBLINK",response.link);
                             localStorage.setItem("FBEMAIL",response.email);
                             localStorage.setItem("FBGENDER",response.gender);
                             localStorage.setItem("FBNAME",response.name);
-                        });*/
-                       // localStorage.setItem("userLoginBy",data);
-                       // localStorage.setItem("myLoginStatus",true);
-                      // $('#fbshow').css('display',"block");        /**************************************/
+                            localStorage.setItem("userLoginBy",data);
+                            localStorage.setItem("myLoginStatus",true);
+                        });
+                        $('#fbshow').css('display',"block");        /**************************************/
                         app.apps.navigate("views/dashboard.html");
                         
                     }
