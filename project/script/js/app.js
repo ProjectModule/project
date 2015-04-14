@@ -4,8 +4,6 @@ var app = (function(win){
     var db,mobileApp;
     var onDeviceReady = function()
     {
-        console.log(typeof(localStorage.getItem('myLoginStatus')));
-        console.log(localStorage.getItem('myLoginStatus'));
         window.fb = new facebookConnect();
         window.fb.run();
         
@@ -43,7 +41,6 @@ var app = (function(win){
                 FB.login(function(response){
                     if (response.authResponse)
                     {
-                        alert("enter");
                         FB.api('/me', function(response) {
                             localStorage.setItem("FBID",response.id);
                             localStorage.setItem("FBLINK",response.link);
@@ -54,7 +51,12 @@ var app = (function(win){
                             localStorage.setItem("myLoginStatus",true);
                         });
                         $('#fbshow').css('display',"block");        /**************************************/
-                        app.apps.navigate("views/dashboard.html");
+                        app.apps.showLoading();
+                        setTimeout(function(){ 
+                            app.apps.navigate("views/dashboard.html");
+                            app.apps.hideLoading();
+                        }, 2000);
+                        
                         
                     }
                 },{scope:'email,user_likes'});
@@ -75,7 +77,6 @@ var app = (function(win){
                 localStorage.setItem("FBGENDER","");
                 localStorage.setItem("FBNAME","");
                 $('#fbshow').css('display',"none");            /**************************************/
-                
                 FB.logout(function(response){
                    app.apps.navigate("views/home.html");
                 });
