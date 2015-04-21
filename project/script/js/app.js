@@ -56,8 +56,6 @@ var app = (function(win){
                             app.apps.navigate("views/dashboard.html");
                             app.apps.hideLoading();
                         }, 2000);
-                        
-                        
                     }
                 },{scope:'email,user_likes'});
             }
